@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Regal Admin</title>
+  <title>GED</title>
   <!-- base:css -->
   <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../vendors/feather/feather.css">
@@ -16,7 +16,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="../../css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="shortcut icon" href="../../images/ged-logo.png" />
 </head>
 
 <body>
@@ -27,7 +27,7 @@
           <div class="col-lg-6 d-flex align-items-center justify-content-center">
             <div class="auth-form-transparent text-left p-3">
               <div class="brand-logo">
-                <img src="../../images/logo-dark.png" alt="logo">
+                <img src="../../images/ged-logo-blue.png" alt="logo">
               </div>
               <h4>Bonjour!</h4>
               <form class="pt-3" method="POST" action="{{ route('login') }}">
@@ -40,7 +40,7 @@
                         <i class="mdi mdi-account-outline text-primary"></i>
                       </span>
                     </div>
-                    <input type="email" class="form-control form-control-lg border-left-0" id="email"
+                    <input type="email" class="form-control form-control-lg border-left-0" name="email" id="email"
                       placeholder="Email">
                     @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -71,7 +71,6 @@
                       {{ __('Remember Me') }}
                     </label>
                   </div>
-                  <a href="#" class="auth-link text-black">Forgot password?</a>
                   @if (Route::has('password.request'))
                   <a class="auth-link text-black" href="{{ route('password.request') }}">
                     {{ __('Forgot Your Password?') }}

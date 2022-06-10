@@ -10,7 +10,7 @@
               <h4 class="font-weight-bold text-dark">Bonjour, {{ Auth::user()->name }}</h4>
             </div>
           </div>
-         hnaa!!
+         User page!!
         </div>
         <!-- content-wrapper ends -->
         

@@ -100,12 +100,16 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Settings</p>
-              <a class="dropdown-item preview-item">               
-                  <i class="icon-head"></i> Profile
-              </a>
-              <a class="dropdown-item preview-item">
-                  <i class="icon-inbox"></i> Logout
-              </a>
+              @if (Auth::user())
+              <form method="POST" action="{{ route('logout') }}" class="dropdown-item preview-item">
+                @csrf
+                
+                <button type="submit" class="btn">
+                  <i class="icon-inbox"></i>Déconnexion
+                </button>
+              </form>
+            
+              @endif
             </div>
           </li>
           <li class="nav-item dropdown mr-4 d-lg-flex d-none">
@@ -128,12 +132,13 @@
             <img src="images/faces/face28.png">
           </div>
           <div class="user-name">
-              Admin
+            {{ Auth::user()->name }}
           </div>
           <div class="user-designation">
-              Developer
+            {{ Auth::user()->role }}
           </div>
         </div>
+        @if (Auth::user()->role=='ADMIN')
         <ul class="nav">
           <li class="nav-item">
             <a class="nav-link" href="index.html">
@@ -201,6 +206,44 @@
             </a>
           </li>
         </ul>
+        @else 
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="icon-box menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/forms/basic_elements.html">
+              <i class="icon-paper-stack menu-icon"></i>
+              <span class="menu-title">Documents</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">Compte</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="docs/documentation.html">
+              <i class="icon-cog menu-icon"></i>
+              <span class="menu-title">Paramétres</span>
+            </a>
+          </li>
+        </ul>
+        @endif
       </nav>
 
 
