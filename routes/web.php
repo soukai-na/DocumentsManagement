@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FolderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,13 @@ Route::get('/', function () { return view('welcome'); })->middleware('admin');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('')->middleware('admin')->group(function(){
+    Route::get('/folders', [FolderController::class, 'index'])->name('folders.index');
+    Route::get('/folders/create',[FolderController::class,'create'])->name('folders.create');
+    Route::post('/folders/store',[FolderController::class,'store'])->name('folders.store');
+    Route::get('/folder',[FolderController::class,'show'])->name('folders.show');
+    Route::delete('/folders/{folder:id}/delete',[FolderController::class,'delete'])->name('folders.delete');
+    Route::get('/folders/{folder}/edit',[FolderController::class,'edit'])->name('folders.edit');
+    Route::put('/folders/{folder}/update',[FolderController::class,'update'])->name('folders.update');
+});
