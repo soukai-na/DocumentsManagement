@@ -15,7 +15,7 @@ use App\Http\Controllers\FolderController;
 |
 */
 
-Route::get('/', function () { return view('welcome'); })->middleware('admin');
+Route::get('/', function () { return view('welcome'); })->middleware('admin')->name('welcome');
 
 Auth::routes();
 
@@ -23,7 +23,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('')->middleware('admin')->group(function(){
     Route::get('/folders', [FolderController::class, 'index'])->name('folders.index');
-    Route::get('/folders/create',[FolderController::class,'create'])->name('folders.create');
+    Route::get('/folders/{folder:id}',[FolderController::class, 'tri'])->name('folders.tri');
+    Route::get('/createfolder',[FolderController::class,'create'])->name('folders.create');
+    Route::get('/{folder:id}/createfolder',[FolderController::class,'tricreate'])->name('folders.tricreate');
     Route::post('/folders/store',[FolderController::class,'store'])->name('folders.store');
     Route::get('/folder',[FolderController::class,'show'])->name('folders.show');
     Route::delete('/folders/{folder:id}/delete',[FolderController::class,'delete'])->name('folders.delete');

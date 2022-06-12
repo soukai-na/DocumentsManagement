@@ -10,7 +10,11 @@
               <h4 class="font-weight-bold text-dark">Bonjour, {{ Auth::user()->name }}</h4>
             </div>
           </div>
-         hnaa!!
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active" aria-current="page">Page d'accueil</li>
+            </ol>
+          </nav>
         </div>
         <!-- content-wrapper ends -->
         

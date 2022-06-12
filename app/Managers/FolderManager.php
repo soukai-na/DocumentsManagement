@@ -9,7 +9,8 @@ class FolderManager{
     public function build(Folder $folder,FolderRequest $request ){
         $folder->designation= $request->input('designation');     
         $folder->designationar= $request->input('designationar');      
-        $folder->type= $request->input('type');       
+        $folder->type= $request->input('type');   
+        $folder->folder_id=$request->input('folder');    
         $folder->save();
     }
 }

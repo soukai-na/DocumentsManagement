@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('designation');
             $table->string('designationar');
             $table->string('type');
+            $table->unsignedBigInteger('folder_id')->nullable();
+            $table->foreign('folder_id')->nullable()->references('id')->on('folders');
             $table->timestamps();
         });
     }

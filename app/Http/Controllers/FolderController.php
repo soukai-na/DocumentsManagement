@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Folder;
 use Illuminate\Http\Request;
 use App\Managers\FolderManager;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\FolderRequest;
 
 class FolderController extends Controller
@@ -44,6 +45,8 @@ class FolderController extends Controller
         ]);
     }
 
+    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -79,6 +82,26 @@ class FolderController extends Controller
     public function edit(Folder $folder)
     {
         return view('folders.edit',[
+            'folder'=>$folder
+        ]);
+    }
+
+    public function tri($id)
+    {
+        $folders = DB::table('folders')->where('folder_id', $id)->get();
+        
+        return view(
+            'folders.tri',
+            [
+                'folders' => $folders,
+            ]
+        );
+      
+    }
+    public function tricreate(Folder $folder)
+    {
+        return view('folders.create',[
+            'folders'=>Folder::all(),
             'folder'=>$folder
         ]);
     }

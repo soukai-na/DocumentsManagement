@@ -1,18 +1,18 @@
-@extends('base')
+@extends('base2')
 @section('content')
 <div class="main-panel">
     <div class="content-wrapper">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('welcome')}}">Page d'accueil</a></li>
-          <li class="breadcrumb-item active" aria-current="page">services</li>
+          <li class="breadcrumb-item active" aria-current="page">okkk</li>
         </ol>
       </nav>
       <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <a  href="{{ route('folders.create') }}"> 
+                <a  href="ok"> 
                   <button type="button" class="btn btn-inverse-info btn-fw">
                     <i class="mdi mdi-plus"></i>
                       Ajouter un dossier
@@ -41,7 +41,6 @@
                       </tr>
                     </thead>
                     @foreach ($folders as $folder)
-                    @if(empty($folder->folder_id))
                     <tbody>
                       <tr>
                         <td class="py-1"  onclick="document.location='{{ route('folders.tri',$folder->id) }}'" style="cursor:pointer;">
@@ -113,7 +112,6 @@
                         </td>
                       </tr>
                     </tbody>
-                    @endif
                     @endforeach
                   </table>
                 </div>
