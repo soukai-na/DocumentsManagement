@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Models\Groupe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -63,4 +65,9 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::post('/groupes/store',[GroupeController::class,'store'])->name('groupes.store');
     Route::put('/groupes/{groupe}/update',[GroupeController::class,'update'])->name('groupes.update');
     Route::delete('/groupes/{groupe:id}/delete',[GroupeController::class,'delete'])->name('groupes.delete');
+});
+
+
+Route::get('/relation',function(){
+    return Groupe::with('users')->find(1);
 });
