@@ -65,10 +65,10 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="user-profile">
           <div class="user-image">
-            <img src="../../images/faces/face28.png">
+            <img src="../../images/users/{{ Auth::user()->image }}">
           </div>
           <div class="user-name">
-            {{ Auth::user()->name }}
+            {{ Auth::user()->nom }}  {{ Auth::user()->prenom }}
           </div>
           <div class="user-designation">
             {{ Auth::user()->role }}
@@ -77,23 +77,10 @@
         @if (Auth::user()->role=='ADMIN')
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('welcome') }}">
               <i class="icon-box menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="icon-disc menu-icon"></i>
-              <span class="menu-title">UI Elements</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
-              </ul>
-            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="pages/forms/basic_elements.html">
@@ -102,7 +89,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/charts/chartjs.html">
+            <a class="nav-link" href="{{ route('folders.index') }}">
               <i class="icon-folder menu-icon"></i>
               <span class="menu-title">Dossiers</span>
             </a>
@@ -114,7 +101,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/icons/feather-icons.html">
+            <a class="nav-link" href="{{ route('users') }}">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">Utilisateurs</span>
             </a>

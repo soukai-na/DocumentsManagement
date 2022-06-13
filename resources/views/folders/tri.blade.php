@@ -13,6 +13,12 @@
             <div class="card">
               <div class="card-body">
                 <a  href="ok"> 
+                  <button type="button" class="btn btn-inverse-primary btn-fw">
+                    <i class="mdi mdi-upload"></i>
+                      Importer un fichier
+                    </button>
+                </a>
+                <a  href="ok"> 
                   <button type="button" class="btn btn-inverse-info btn-fw">
                     <i class="mdi mdi-plus"></i>
                       Ajouter un dossier

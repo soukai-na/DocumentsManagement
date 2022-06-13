@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\FolderController;
 
 /*
@@ -31,4 +32,13 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::delete('/folders/{folder:id}/delete',[FolderController::class,'delete'])->name('folders.delete');
     Route::get('/folders/{folder}/edit',[FolderController::class,'edit'])->name('folders.edit');
     Route::put('/folders/{folder}/update',[FolderController::class,'update'])->name('folders.update');
+});
+
+Route::prefix('')->middleware('admin')->group(function(){
+    Route::get('/users',[UserController::class, 'index'])->name('users');
+    Route::get('/users/{user}',[UserController::class, 'edit'])->name('users.edit');
+    Route::get('/createuser',[UserController::class, 'create'])->name('users.create');
+    Route::post('/users/store',[UserController::class,'store'])->name('users.store');
+    Route::put('/users/{user}/update',[UserController::class,'update'])->name('users.update');
+    Route::delete('/users/{user:id}/delete',[UserController::class,'delete'])->name('users.delete');
 });
