@@ -83,7 +83,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a class="nav-link" href="{{ route('documents') }}">
               <i class="icon-paper-stack menu-icon"></i>
               <span class="menu-title">Documents</span>
             </a>
@@ -95,7 +95,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
+            <a class="nav-link" href="{{ route('groupes') }}">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Groupes</span>
             </a>

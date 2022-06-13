@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FolderController;
+use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\DocumentController;
 
 /*
@@ -53,4 +54,13 @@ Route::prefix('')->group(function(){
     Route::post('/document/store',[DocumentController::class,'store'])->name('documents.store');
     Route::put('/document/{document}/update',[DocumentController::class,'update'])->name('documents.update');
     Route::delete('/document/{document:id}/delete',[DocumentController::class,'delete'])->name('documents.delete');
+});
+
+Route::prefix('')->middleware('admin')->group(function(){
+    Route::get('/groupes',[GroupeController::class, 'index'])->name('groupes');
+    Route::get('/groupes/{groupe}',[GroupeController::class, 'edit'])->name('groupes.edit');
+    Route::get('/creategroupe',[GroupeController::class, 'create'])->name('groupes.create');
+    Route::post('/groupes/store',[GroupeController::class,'store'])->name('groupes.store');
+    Route::put('/groupes/{groupe}/update',[GroupeController::class,'update'])->name('groupes.update');
+    Route::delete('/groupes/{groupe:id}/delete',[GroupeController::class,'delete'])->name('groupes.delete');
 });

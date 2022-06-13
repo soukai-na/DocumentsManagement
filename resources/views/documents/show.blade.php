@@ -23,7 +23,7 @@
                             {{$document->description}}
                           </p>
                         <center>
-                            <embed src="{{ url('documents/'.$document->file) }}" >
+                            <embed src="{{ url('documents/'.$document->file) }}"  width="800" height="500" >
                         </center>
                       </div>
                     </div>
