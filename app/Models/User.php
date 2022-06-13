@@ -16,7 +16,7 @@ class User extends Authenticatable
     const ADMIN_ROLE = "ADMIN";
 
     const ACTIVE_STATUS="ACTIVE";
-    const INAVTIVE_STATUS="INACTIVE";
+    const INACTIVE_STATUS="INACTIVE";
 
     /**
      * The attributes that are mass assignable.

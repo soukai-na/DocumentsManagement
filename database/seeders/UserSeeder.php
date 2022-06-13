@@ -28,5 +28,17 @@ class UserSeeder extends Seeder
             'role'=>User::ADMIN_ROLE ,
             'status' => User::ACTIVE_STATUS,
         ]);
+        User::create([
+            'email'=>'lasfar@gmail.com',
+            'password'=>Hash::make('lasfar12345'),
+            'nom' => 'Lasfar',
+            'prenom' => 'Abderrahim',
+            'nomar' => 'الأصفر',
+            'prenomar' => 'عبدالرحيم',
+            'telephone' => '0662236187',
+            'image' => 'LASFAR.jpg',
+            'role'=>User::USER_ROLE ,
+            'status' => User::INACTIVE_STATUS,
+        ]);
     }
 }
