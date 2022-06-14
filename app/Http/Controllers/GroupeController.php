@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Groupe;
 use Illuminate\Http\Request;
 use App\Managers\GroupeManager;
@@ -27,7 +28,8 @@ class GroupeController extends Controller
         return view(
             'groupes.index',
             [
-                'groupes' => $groupes
+                'groupes' => $groupes,
+                'groups'=>Groupe::with('users')->find(2)
             ]
         );
     }
@@ -39,7 +41,9 @@ class GroupeController extends Controller
      */
     public function create()
     {
-        return view('groupes.create');
+        return view('groupes.create',[
+            'users'=>User::all(),
+        ]);
     }
 
     /**
@@ -56,6 +60,8 @@ class GroupeController extends Controller
 
         return redirect()->route('groupes')->with('success',"le groupe a bien été sauvegardé!");
     }
+
+   
 
     /**
      * Display the specified resource.

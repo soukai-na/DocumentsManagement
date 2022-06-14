@@ -55,7 +55,11 @@
                                       <ul  class="list-star">
                                         <li ><strong>Description:</strong>   {{ $groupe->description }}</li>
                                         <li><strong>Crée le:</strong>   {{ $groupe->created_at }}</li>
-                                        <li><strong>Utlisateurs:</strong>   ...</li>
+                                        <li><strong>Utlisateurs:</strong>   
+                                        @foreach($groups as $group)
+                                            {{ $group }}
+                                        @endforeach
+                                        </li>
                                       </ul>
                                     </div>
                                     <div class="modal-footer">

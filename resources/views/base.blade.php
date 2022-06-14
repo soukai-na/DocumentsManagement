@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="vendors/jquery-bar-rating/fontawesome-stars-o.css">
   <link rel="stylesheet" href="vendors/jquery-bar-rating/fontawesome-stars.css">
+  <link rel="stylesheet" href="vendors/select2/select2.min.css">
+  <link rel="stylesheet" href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
@@ -195,7 +197,12 @@
   <script src="vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
   <!-- End plugin js for this page -->
   <!-- Custom js for this page-->
+  <script src="vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="vendors/select2/select2.min.js"></script>
   <script src="js/dashboard.js"></script>
+  <script src="js/file-upload.js"></script>
+  <script src="js/typeahead.js"></script>
+  <script src="js/select2.js"></script>
   <!-- End custom js for this page-->
 </body>
 
