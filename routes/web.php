@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\GroupeController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\DocumentController;
 
 /*
@@ -73,4 +74,4 @@ Route::get('/relation',function(){
     return Groupe::with('users')->find(1);
 });
 
-Route::get('/grps',[GroupeController::class,'getGroupes']);
+Route::get('/search',[SearchController::class,'search'])->name('search');
