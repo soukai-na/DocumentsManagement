@@ -27,6 +27,7 @@ class UserSeeder extends Seeder
             'image' => 'ARROUCHI.jpg',
             'role'=>User::ADMIN_ROLE ,
             'status' => User::ACTIVE_STATUS,
+            'groupe_id'=>1
         ]);
         User::create([
             'email'=>'lasfar@gmail.com',

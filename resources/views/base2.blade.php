@@ -10,12 +10,15 @@
   <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/feather/feather.css">
   <link rel="stylesheet" href="../vendors/base/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../vendors/base/bootstrap-tagsinput.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <link rel="stylesheet" href="../vendors/flag-icon-css/css/flag-icon.min.css"/>
   <link rel="stylesheet" href="../vendors/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars-o.css">
   <link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="../css/style.css">
@@ -180,8 +183,12 @@
   </div>
   <!-- container-scroller -->
 
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
   <!-- base:js -->
   <script src="../vendors/base/vendor.bundle.base.js"></script>
+  
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->

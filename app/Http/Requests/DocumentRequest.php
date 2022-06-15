@@ -27,7 +27,8 @@ class DocumentRequest extends FormRequest
             'designation' => 'required',
             'description' => 'required',
             'file' => 'required|mimes:csv,txt,xlx,xls,pdf,doc,docx,mp3,mp4,jpeg,png,jpg,gif,svg|max:2048',
-            'type' => 'required'
+            'type' => 'required',
+            'tags'=>'required'
         ];
     }
 }

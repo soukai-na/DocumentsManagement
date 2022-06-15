@@ -87,6 +87,16 @@
                     @enderror
                   </div>
                   <div class="form-group">
+                    <label for="groupe">Groupe</label>
+                    <select name="groupe" class="form-control">
+                     @foreach ($groupes as $groupe)
+                     @if($user->groupe_id != NULL)
+                         <option value="{{ $groupe->id }}" {{ $groupe->id === $user->groupe->id ? 'selected' : '' }}>{{ $groupe->nom}}</option>
+                      @endif
+                     @endforeach    
+                    </select> 
+                </div>
+                  <div class="form-group">
                     <label for="role">Role</label>
                     <select name="role" class="form-control">
                          <option value="ADMIN" {{ 'ADMIN' === $user->role ? 'selected' : '' }}>ADMIN</option>

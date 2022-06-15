@@ -53,6 +53,14 @@
                             </select> 
                         </div>
                         <div class="form-group">
+                          <label for="tags">Mots clés:</label>
+                          <br/>
+                          <input type="text" name="tags" data-role="tagsinput">
+                          @if ($errors->has('tags'))
+                                    <span class="text-danger">{{ $errors->first('tags') }}</span>
+                                @endif
+                        </div>	
+                        <div class="form-group">
                           <input type="hidden" name="folder" value="{{ $folder->id }}" class="form-control @error('folder') is-invalid @enderror"/>
                           @error('folder')
                               <span class="invalid-feedback" role="alert">
@@ -81,5 +89,5 @@
             </div>
             <!-- content-wrapper ends -->
             
-         
+            
 @endsection

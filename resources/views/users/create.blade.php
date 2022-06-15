@@ -85,6 +85,13 @@
                             @enderror
                           </div>
                           <div class="form-group">
+                            <label for="groupe">Groupe</label>
+                            <select name="groupe" class="form-control">
+                             @foreach ($groupes as $groupe)
+                                 <option value="{{ $groupe->id }}">{{ $groupe->designation}}</option>
+                             @endforeach    
+                            </select> 
+                          <div class="form-group">
                             <label for="role">Role</label>
                             <select name="role" class="form-control">
                                  <option value="ADMIN">ADMIN</option>

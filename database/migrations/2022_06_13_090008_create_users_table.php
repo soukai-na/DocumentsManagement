@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('image');
             $table->string('role');
             $table->string('status');
+            $table->unsignedBigInteger('groupe_id')->nullable();
+            $table->foreign('groupe_id')->nullable()->references('id')->on('groupes');
             $table->rememberToken();
             $table->timestamps();
         });

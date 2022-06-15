@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Groupe;
 use Illuminate\Http\Request;
 use App\Managers\UserManager;
 use App\Http\Requests\UserRequest;
@@ -17,18 +18,22 @@ class UserController extends Controller
 
     public function index()
     {
+        $groupes=Groupe::all();
         $users = User::paginate(5);
         return view(
             'users.index',
             [
-                'users' => $users
+                'users' => $users,
+                'groupes'=>$groupes
             ]
         );
     }
 
     public function create()
     {
-        return view('users.create');
+        return view('users.create',[
+            'groupes'=>Groupe::all(),
+        ]);
     }
 
     public function store(UserRequest $request)
@@ -44,7 +49,8 @@ class UserController extends Controller
     {
         
         return view('users.edit',[
-            'user'=>$user
+            'user'=>$user,
+            'groupes'=>Groupe::all(),
         ]);
     }
 

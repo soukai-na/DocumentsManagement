@@ -15,6 +15,12 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                       <div class="card-body">
+                        <div class="mb-3">
+                          <strong>Tag:</strong>
+				                        @foreach($document->tags as $tag)
+					                           <label class="badge badge-info">{{ $tag->name }}</label>
+			                          @endforeach
+                        </div>
                         <div class="float-right">
                           <a  href="{{ route('documents.download',$document->id) }}"> 
                             <button type="button" class="btn btn-outline-info btn-fw ">

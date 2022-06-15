@@ -30,7 +30,8 @@ class UserManager{
             $user->image=$filename;
         }
         $user->role= $request->input('role'); 
-        $user->status= $request->input('status');          
+        $user->status= $request->input('status');  
+        $user->groupe_id= $request->input('groupe') ;          
         $user->save();
     }
 }

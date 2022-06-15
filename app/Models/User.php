@@ -35,6 +35,7 @@ class User extends Authenticatable
         'image',
         'role',
         'status',
+        'groupe_id'
     ];
 
     /**
@@ -56,8 +57,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function groupes()
-    {
-        return $this->belongsToMany(Groupe::class, 'groupe_user', 'user_id', 'groupe_id');
+    public function groupe(){
+        return $this->belongsTo(Groupe::class);
     }
 }

@@ -79,6 +79,8 @@
                                         <li ><strong>Nom en arabe:</strong>   {{ $user->nomar }}</li>
                                         <li ><strong>Préom en arabe:</strong>   {{ $user->prenomar }}</li>
                                         <li ><strong>Téléphone:</strong>   {{ $user->telephone }}</li>
+                                        
+                                        <li><strong>Groupe:</strong>   {{ $user->groupe_id }}</li>
                                         <li><strong>Crée le:</strong>   {{ $user->created_at }}</li>
                                       </ul>
                                     </div>
