@@ -43,6 +43,14 @@
                         <option value="dossier" {{ 'dossier' === $folder->type ? 'selected' : '' }}>Dossier</option>
                       </select>
                     </div>
+                    <div class="form-group">
+                      <input type="hidden" name="folder" value="{{ $folder->folder_id }}" class="form-control @error('folder') is-invalid @enderror"  id="exampleInputName1" >
+                      @error('folder')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
+                    </div>
                   <button type="submit" class="btn btn-primary mr-2">Modifier</button>
                 </form>
                 <br>

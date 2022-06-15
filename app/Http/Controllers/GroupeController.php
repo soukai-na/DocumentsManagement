@@ -25,6 +25,7 @@ class GroupeController extends Controller
     public function index()
     {
         $groupes = Groupe::paginate(5);
+        
         return view(
             'groupes.index',
             [
@@ -34,6 +35,14 @@ class GroupeController extends Controller
         );
     }
 
+    public function getGroupes(){
+        $user = User::find(2);
+        $groupes = $user->groupes; 
+        foreach($groupes as $groupe) {
+            return $groupe;
+          }
+
+    }
     /**
      * Show the form for creating a new resource.
      *

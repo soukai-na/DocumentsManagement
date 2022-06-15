@@ -31,6 +31,13 @@
                 </div>
                 <div class="form-group">
                   <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Rechercher par mot clé" aria-label="Recipient's username">
+                    <div class="input-group-append">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
                     <div class="input-group-prepend">
                       <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rechercher par ...</button>
                       <div class="dropdown-menu">

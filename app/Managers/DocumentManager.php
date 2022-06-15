@@ -22,6 +22,8 @@ class DocumentManager{
             $document->file=$filename;
         } 
         $document->type=$request->input('type'); 
+        $document->folder_id= $request->input('folder') ;
+        $document->user_id=$request->input('user'); 
         $document->save();
     }
 }

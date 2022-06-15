@@ -30,7 +30,7 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::get('/folders', [FolderController::class, 'index'])->name('folders.index');
     Route::get('/folders/{folder:id}',[FolderController::class, 'tri'])->name('folders.tri');
     Route::get('/createfolder',[FolderController::class,'create'])->name('folders.create');
-    Route::get('/{folder:id}/createfolder',[FolderController::class,'tricreate'])->name('folders.tricreate');
+    Route::get('/{folder:id}/createsousfolder',[FolderController::class,'tricreate'])->name('folders.tricreate');
     Route::post('/folders/store',[FolderController::class,'store'])->name('folders.store');
     Route::get('/folder',[FolderController::class,'show'])->name('folders.show');
     Route::delete('/folders/{folder:id}/delete',[FolderController::class,'delete'])->name('folders.delete');
@@ -52,10 +52,11 @@ Route::prefix('')->group(function(){
     Route::get('/document',[DocumentController::class, 'index'])->name('documents');
     Route::get('/document/{document}',[DocumentController::class, 'edit'])->name('documents.edit');
     Route::get('/document/{document}',[DocumentController::class, 'show'])->name('documents.show');
-    Route::get('/createdocument',[DocumentController::class, 'create'])->name('documents.create');
+    Route::get('/{folder:id}/createdocument',[DocumentController::class, 'create'])->name('documents.create');
     Route::post('/document/store',[DocumentController::class,'store'])->name('documents.store');
     Route::put('/document/{document}/update',[DocumentController::class,'update'])->name('documents.update');
     Route::delete('/document/{document:id}/delete',[DocumentController::class,'delete'])->name('documents.delete');
+    Route::get('/document/download/{document:id}',[DocumentController::class,'download'])->name('documents.download');
 });
 
 Route::prefix('')->middleware('admin')->group(function(){
@@ -71,3 +72,5 @@ Route::prefix('')->middleware('admin')->group(function(){
 Route::get('/relation',function(){
     return Groupe::with('users')->find(1);
 });
+
+Route::get('/grps',[GroupeController::class,'getGroupes']);

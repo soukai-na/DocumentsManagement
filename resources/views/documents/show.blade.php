@@ -15,6 +15,26 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                       <div class="card-body">
+                        <div class="float-right">
+                          <a  href="{{ route('documents.download',$document->id) }}"> 
+                            <button type="button" class="btn btn-outline-info btn-fw ">
+                              <i class="mdi mdi-download"></i>
+                                   Télécharger
+                            </button>
+                          </a>
+                          <a  href="#"> 
+                            <button type="button" class="btn btn-outline-success btn-fw ">
+                              <i class="mdi mdi-pencil"></i>
+                                  Modifier
+                            </button>
+                          </a>
+                          <a  href="#"> 
+                            <button type="button" class="btn btn-outline-danger btn-fw ">
+                              <i class="mdi mdi-delete"></i>
+                                  Supprimer
+                            </button>
+                          </a>
+                        </div>
                         <h4 class="card-title">{{$document->designation}}</h4>
                         <p class="card-description">
                           Crée par: admin <br> {{$document->created_at}}
@@ -23,7 +43,7 @@
                             {{$document->description}}
                           </p>
                         <center>
-                            <embed src="{{ url('documents/'.$document->file) }}"  width="800" height="500" >
+                            <embed src="{{ url('documents/'.$document->file) }}"  width="800" height="700" >
                         </center>
                       </div>
                     </div>

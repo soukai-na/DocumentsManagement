@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Folder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Document extends Model
 {
@@ -13,6 +14,12 @@ class Document extends Model
         'designation',
         'description',
         'file',
-        'type'
+        'type',
+        'folder_id',
+        'user_id'
     ];
+
+    public function folder(){
+        return $this->belongsTo(Folder::class);
+    }
 }

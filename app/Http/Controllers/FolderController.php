@@ -89,18 +89,22 @@ class FolderController extends Controller
     public function tri($id)
     {
         $folders = DB::table('folders')->where('folder_id', $id)->get();
+        $documents=DB::table('documents')->where('folder_id',$id)->get();
         
+        $folder_id=$id;
         return view(
             'folders.tri',
             [
                 'folders' => $folders,
+                'documents'=>$documents,
+                'folder_id' => $id
             ]
         );
       
     }
     public function tricreate(Folder $folder)
     {
-        return view('folders.create',[
+        return view('folders.tricreate',[
             'folders'=>Folder::all(),
             'folder'=>$folder
         ]);

@@ -12,13 +12,13 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <a  href="ok"> 
+                <a  href="{{ route('documents.create',$folder_id) }}"> 
                   <button type="button" class="btn btn-inverse-primary btn-fw">
                     <i class="mdi mdi-upload"></i>
                       Importer un fichier
                     </button>
                 </a>
-                <a  href="ok"> 
+                <a  href="{{ route('folders.tricreate',$folder_id) }} "> 
                   <button type="button" class="btn btn-inverse-info btn-fw">
                     <i class="mdi mdi-plus"></i>
                       Ajouter un dossier
@@ -39,24 +39,18 @@
                           Designation
                         </th>
                         <th>
-                          Arabe designation
-                        </th>
-                        <th>
                             Actions
                         </th>
                       </tr>
                     </thead>
-                    @foreach ($folders as $folder)
                     <tbody>
+                    @foreach ($folders as $folder)
                       <tr>
                         <td class="py-1"  onclick="document.location='{{ route('folders.tri',$folder->id) }}'" style="cursor:pointer;">
                           <img src="../../images/folder.png" style="border-radius: 0%; cursor: pointer;" alt="image"/>
                         </td>
                         <td>
                           {{ $folder->designation }}
-                        </td>
-                        <td>
-                            {{ $folder->designationar }}
                         </td>
                         <td>
                             <button type="button" class="btn btn-primary btn-rounded btn-icon" data-toggle="modal" data-target="#show{{ $folder->id }}" >
@@ -117,8 +111,72 @@
                                </form>
                         </td>
                       </tr>
+                      @endforeach
+                      @foreach ($documents as $document)
+                      <tr>
+                        <td class="py-1"  onclick="document.location='{{ route('documents.show',$document->id) }}'" style="cursor:pointer;">
+                          <img src="../../images/file.png" style="border-radius: 0%; cursor: pointer;" alt="image"/>
+                        </td>
+                        <td>
+                          {{ $document->designation }}
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-rounded btn-icon" data-toggle="modal" data-target="#show{{ $document->id }}" >
+                                <i class="mdi mdi-eye"></i>
+                            </button>
+                          <div class="modal fade" id="show{{ $document->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">{{ $document->designation }}</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  Ici!
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="">
+                            <button type="button" class="btn btn-success btn-rounded btn-icon">
+                                <i class="mdi mdi-pencil"></i>
+                            </button>
+                          </a>
+                            <button type="button" class="btn btn-danger btn-rounded btn-icon" onclick="document.getElementById('model-open-{{ $document->id }}').style.display='block'">
+                                <i class="mdi mdi-delete"></i>
+                            </button>
+                            <form action="{{ route('documents.delete' , $document->id) }}" method="POST">
+                                @csrf
+                                @method("DELETE")
+                                <div class="modal" id="model-open-{{ $document->id }}">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title">La suppression d'un document définitivement</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"onclick="document.getElementById('model-open-{{ $document->id }}').style.display='none'" aria-label="Close">
+                                          <span aria-hidden="true"></span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <p>Etes-vous sùr de vouloir supprimer ce document?</p>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Oui</button>
+                                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('model-open-{{ $document->id }}').style.display='none'" data-bs-dismiss="modal">Annuler</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                               </form>
+                        </td>
+                      </tr>
+                      @endforeach
                     </tbody>
-                    @endforeach
                   </table>
                 </div>
               </div>

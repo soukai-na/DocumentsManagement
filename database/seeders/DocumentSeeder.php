@@ -19,13 +19,17 @@ class DocumentSeeder extends Seeder
             'designation' => 'doc1',
             'description' => 'وثيقة1',
             'file'=>'doc1.pdf',
-            'type' => 'pdf'
+            'type' => 'pdf',
+            'folder_id'=>1,
+            'user_id'=>1
         ]);
         Document::create([
             'designation' => 'doc2',
             'description' => 'وثيقة2',
             'file'=>'doc2.png',
-            'type' => 'image'
+            'type' => 'image',
+            'folder_id'=>8,
+            'user_id'=>1
         ]);
     }
 }

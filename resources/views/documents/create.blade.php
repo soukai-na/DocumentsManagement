@@ -52,6 +52,19 @@
                                  <option value="txt">Fichier texte</option>
                             </select> 
                         </div>
+                        <div class="form-group">
+                          <input type="hidden" name="folder" value="{{ $folder->id }}" class="form-control @error('folder') is-invalid @enderror"/>
+                          @error('folder')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                        </div>
+                        <div class="form-group">
+                            
+                          <input type="hidden" name="user" class="form-control @error('user') is-invalid @enderror" value="{{ Auth::user()->id }}" />
+                          
+                        </div>
                           <button type="submit" class="btn btn-primary mr-2">Ajouter le document</button>
                           
                         </form><a href=" {{ Route('documents') }}">

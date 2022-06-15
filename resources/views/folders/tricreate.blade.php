@@ -42,10 +42,8 @@
                         <option value="dossier">Dossier</option>
                       </select>
                     </div>
-                    @dump( '$folder->id' )
-                    ok
                     <div class="form-group">
-                        <input type="hidden" name="folder" value="{{ $folder->folder->id }}" class="form-control @error('folder') is-invalid @enderror"  id="exampleInputName1" >
+                        <input type="hidden" name="folder" value="{{ $folder->id }}" class="form-control @error('folder') is-invalid @enderror"  id="exampleInputName1" >
                         @error('folder')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

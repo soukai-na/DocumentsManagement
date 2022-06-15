@@ -32,14 +32,6 @@
                                                   </span>
                                               @enderror              
                         </div>
-                        <div class="form-group">
-                          <label>Users</label>
-                          <select class="js-example-basic-multiple w-100" multiple="multiple">
-                            @foreach ($users as $user)
-                                 <option value="{{ $user->id }}">{{ $user->nom}} {{ $user->prenom}}</option>
-                             @endforeach  
-                          </select>
-                        </div>
 
                           <button type="submit" class="btn btn-primary mr-2">Ajouter le groupe</button>
                           
