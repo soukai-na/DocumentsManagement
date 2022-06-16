@@ -33,54 +33,37 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="text" name="tag" class="form-control" placeholder="Rechercher par mot clé"
-                                            aria-label="Recipient's username">
+                                        <input type="text" name="tag" class="form-control"
+                                            placeholder="Rechercher par mot clé" aria-label="Recipient's username">
                                         <div class="input-group-append">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rechercher
-                                                par
-                                                ...</button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Services</a>
-                                                <a class="dropdown-item" href="#">Sous Services</a>
-                                                <a class="dropdown-item" href="#">Thèmes</a>
-                                                <a class="dropdown-item" href="#">Sous Thèmes</a>
-                                                <a class="dropdown-item" href="#">Dossiers</a>
-                                            </div>
-                                        </div>
-                                        <input type="text" class="form-control"
-                                            aria-label="Text input with dropdown button">
-                                    </div>
+                                    <select class="form-control" name="type" id="exampleSelectGender">
+                                        <option selected disabled>Type de dossier</option>
+                                        <option value="service">Service</option>
+                                        <option value="sousservice">Sous Service</option>
+                                        <option value="theme">Thème</option>
+                                        <option value="soustheme">Sous Thème</option>
+                                        <option value="dossier">Dossier</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="type" id="exampleSelectGender">
+                                        <option selected disabled>Type de fichier</option>
+                                        <option value="image">Image</option>
+                                        <option value="video">Vidéo</option>
+                                        <option value="pdf">PDF</option>
+                                        <option value="word">Word</option>
+                                        <option value="excel">Excel</option>
+                                        <option value="txt">Fichier texte</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type de
-                                                documents</button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Images</a>
-                                                <a class="dropdown-item" href="#">Vidéos</a>
-                                                <a class="dropdown-item" href="#">PDF</a>
-                                                <a class="dropdown-item" href="#">Word</a>
-                                                <a class="dropdown-item" href="#">Excel</a>
-                                                <a class="dropdown-item" href="#">Fichier texte</a>
-                                            </div>
-                                        </div>
-                                        <input type="text" class="form-control"
-                                            aria-label="Text input with dropdown button">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input type="date" name="date" class="form-control" placeholder="Par date de création"
-                                            aria-label="Recipient's username">
+                                        <input type="date" name="date" class="form-control"
+                                            placeholder="Par date de création" aria-label="Recipient's username">
                                         <div class="input-group-append">
                                         </div>
                                     </div>

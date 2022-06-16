@@ -5,7 +5,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Page d'accueil</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $key }}, {{ $tag }}</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $key }}, {{ $tag }}, {{$date}}</li>
                 </ol>
             </nav>
             <div class="row">
@@ -42,7 +42,7 @@
                                                     {{ $document->type }}
                                                 </td>
                                                 <td>
-                                                    {{ $document->created_at }}
+                                                    {{ $document->dateFormatted() }}
                                                 </td>
                                             </tr>
                                         </tbody>

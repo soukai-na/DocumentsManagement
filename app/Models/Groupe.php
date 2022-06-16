@@ -10,6 +10,10 @@ class Groupe extends Model
 {
     use HasFactory;
 
+    public function dateFormatted(){
+        return date_format($this->created_at, 'd-m-Y ');
+    }
+
     protected $fillable=[
         'nom','description'
     ];

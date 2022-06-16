@@ -5,7 +5,8 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('welcome')}}">Page d'accueil</a></li>
-          <li class="breadcrumb-item active" aria-current="page">okkk</li>
+          <li class="breadcrumb-item"><a href="{{ route('folders.index')}}">services</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ $folder_id }}</li>
         </ol>
       </nav>
       <div class="row">

@@ -70,7 +70,7 @@
                                   <ul  class="list-star">
                                     <li ><strong>Designation:</strong>   {{ $folder->designation }}</li>
                                     <li><strong>Arabe Designation:</strong>   {{ $folder->designationar }}</li>
-                                    <li><strong>Crée le:</strong>   {{ $folder->created_at }}</li>
+                                    <li><strong>Crée le:</strong>   {{ $folder->dateFormatted() }}</li>
                                   </ul>
                                 </div>
                                 <div class="modal-footer">

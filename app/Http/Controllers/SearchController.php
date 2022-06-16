@@ -13,10 +13,12 @@ class SearchController extends Controller
     {
         $key = trim($request->get('doc'));
         $tag=trim($request->get('tag'));
+        $date=trim($request->get('date'));
 
         $documents = Document::query()
             ->where('designation', 'like', "%{$key}%")
             ->orWhere('file', 'like', "%{$key}%")
+            ->orWhere('created_at','like',$date)
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -31,6 +33,7 @@ class SearchController extends Controller
         return view('search', [
             'key' => $key,
             'tag'=>$tag,
+            'date'=>$date,
             'documents' => $documents,
             'folders' => $folders,
             'tags' => $tags

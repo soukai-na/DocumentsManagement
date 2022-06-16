@@ -43,7 +43,7 @@
                                                     {{ $document->type }}
                                                 </td>
                                                 <td>
-                                                    {{ $document->created_at }}
+                                                    {{ $document->dateFormatted() }}
                                                 </td>
                                             </tr>
                                         </tbody>

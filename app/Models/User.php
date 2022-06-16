@@ -13,6 +13,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function dateFormatted(){
+        return date_format($this->created_at, 'd-m-Y ');
+    }
+
     const USER_ROLE = "USER";
     const ADMIN_ROLE = "ADMIN";
 

@@ -54,7 +54,7 @@
                                     <div class="modal-body">
                                       <ul  class="list-star">
                                         <li ><strong>Description:</strong>   {{ $groupe->description }}</li>
-                                        <li><strong>Crée le:</strong>   {{ $groupe->created_at }}</li>
+                                        <li><strong>Crée le:</strong>   {{ $groupe->dateFormatted() }}</li>
                                       </ul>
                                     </div>
                                     <div class="modal-footer">

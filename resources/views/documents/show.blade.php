@@ -39,12 +39,13 @@
                             @foreach ($document->tags as $tag)
                                 <label class="badge badge-info mb-5">{{ $tag->name }}</label>
                             @endforeach
-                            <h4 class="card-title">{{ $document->designation }}</h4>
+                            <h2 class="card-title">{{ $document->designation }}</h2>
                             <p class="card-description">
-                                Crée par: admin <br> {{ $document->created_at }}
+                                <b>Crée par:</b> admin <br>
+                                <b>Date de création:</b> {{ $document->dateFormatted() }}
                             </p>
                             <p class="card-description">
-                                {{ $document->description }}
+                                <b>Description:</b><br>{{ $document->description }}
                             </p>
 
                             @switch($document->type)

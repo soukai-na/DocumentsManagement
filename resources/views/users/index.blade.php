@@ -81,7 +81,7 @@
                                         <li ><strong>Téléphone:</strong>   {{ $user->telephone }}</li>
                                         
                                         <li><strong>Groupe:</strong>   {{ $user->groupe_id }}</li>
-                                        <li><strong>Crée le:</strong>   {{ $user->created_at }}</li>
+                                        <li><strong>Crée le:</strong>   {{ $user->dateFormatted() }}</li>
                                       </ul>
                                     </div>
                                     <div class="modal-footer">
