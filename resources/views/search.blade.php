@@ -5,16 +5,16 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Page d'accueil</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $key }}</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $key }}, {{ $tag }}</li>
                 </ol>
             </nav>
             <div class="row">
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h3>Résultat de recherche pour:</h3><br>
+                            <h3>Résultats de recherche :</h3><br>
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-striped" >
                                     <thead>
                                         <tr>
                                             <th>Designation </th>

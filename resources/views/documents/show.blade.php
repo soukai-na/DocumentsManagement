@@ -22,7 +22,7 @@
                                         Télécharger
                                     </button>
                                 </a>
-                                <a href="#">
+                                <a href="">
                                     <button type="button" class="btn btn-outline-success btn-fw ">
                                         <i class="mdi mdi-pencil"></i>
                                         Modifier
@@ -35,6 +35,10 @@
                                     </button>
                                 </a>
                             </div>
+                            <b>Mot clés:</b>
+                            @foreach ($document->tags as $tag)
+                                <label class="badge badge-info mb-5">{{ $tag->name }}</label>
+                            @endforeach
                             <h4 class="card-title">{{ $document->designation }}</h4>
                             <p class="card-description">
                                 Crée par: admin <br> {{ $document->created_at }}
@@ -42,13 +46,61 @@
                             <p class="card-description">
                                 {{ $document->description }}
                             </p>
-                            <b>Mot clés:</b>
-                            @foreach ($document->tags as $tag)
-                                <label class="badge badge-info">{{ $tag->name }}</label>
-                            @endforeach
-                            <center>
-                                <embed src="{{ url('documents/' . $document->file) }}" width="800" height="700">
-                            </center>
+
+                            @switch($document->type)
+                                @case('image')
+                                    <center>
+                                        <img src="{{ url('documents/' . $document->file) }}" alt="image" />
+                                    </center>
+                                @break
+
+                                @case('video')
+                                    <center>
+                                        <video controls width="500" autoplay>
+
+                                            <source src="{{ url('documents/' . $document->file) }}">
+
+                                        </video>
+                                    </center>
+                                @break
+
+                                @case('audio')
+                                    <center>
+                                        <figure>
+                                            <audio controls src="{{ url('documents/' . $document->file) }}">
+                                            </audio>
+                                        </figure>
+                                    </center>
+                                @break
+
+                                @case('excel')
+                                    <center>
+                                        <a href="{{ url('documents/' . $document->file) }}" target="_blank">Ouvrir le fichier
+                                            excel</a>
+                                    </center>
+                                @break
+
+                                @case('word')
+                                    <center>
+                                        <a href="{{ url('documents/' . $document->file) }}" target="_blank">Ouvrir le fichier
+                                            word</a>
+                                    </center>
+                                @break
+
+                                @case('txt')
+                                    <center>
+                                        <object data="{{ url('documents/' . $document->file) }}" type="text/plain" width="700">
+                                            <a href="{{ url('documents/' . $document->file) }}">No Support?</a>
+                                        </object>
+                                    </center>
+                                @break
+
+                                @default
+                                    <center>
+                                        <embed src="{{ url('documents/' . $document->file) }}" width="800" height="700">
+                                    </center>
+                            @endswitch
+
                         </div>
                     </div>
                 </div>

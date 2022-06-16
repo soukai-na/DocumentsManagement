@@ -51,14 +51,15 @@
                                 </table>
                             </div>
                         </div>
+                        <div class='d-flex justify-content-center mt-5'>
+                            {{ $documents->links('vendor.pagination.custom') }}
+                        </div>
                     </div>
 
 
 
 
-                    <div class='d-flex justify-content-center mt-5'>
-                        {{ $documents->links('vendor.pagination.custom') }}
-                    </div>
+
                 </div>
                 <!-- content-wrapper ends -->
 

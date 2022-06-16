@@ -11,7 +11,8 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
-        $key = trim($request->get('q'));
+        $key = trim($request->get('doc'));
+        $tag=trim($request->get('tag'));
 
         $documents = Document::query()
             ->where('designation', 'like', "%{$key}%")
@@ -21,12 +22,15 @@ class SearchController extends Controller
 
         $folders = Folder::all();
 
-        $tags = Tag::all();
+        $tags = Tag::query()
+                ->where('slug', 'like', "%{$tag}%")
+                ->get();
 
        
 
         return view('search', [
             'key' => $key,
+            'tag'=>$tag,
             'documents' => $documents,
             'folders' => $folders,
             'tags' => $tags

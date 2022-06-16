@@ -25,7 +25,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="text" name="q" class="form-control"
+                                        <input type="text" name="doc" class="form-control"
                                             placeholder="Rechercher par nom de document" aria-label="Recipient's username">
                                         <div class="input-group-append">
                                         </div>
@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Rechercher par mot clé"
+                                        <input type="text" name="tag" class="form-control" placeholder="Rechercher par mot clé"
                                             aria-label="Recipient's username">
                                         <div class="input-group-append">
                                         </div>
@@ -79,14 +79,14 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="date" class="form-control" placeholder="Par date de création"
+                                        <input type="date" name="date" class="form-control" placeholder="Par date de création"
                                             aria-label="Recipient's username">
                                         <div class="input-group-append">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group justify-content-center">
-                                    <button type="submit" class="btn btn-primary mb-2">Rechercher</button>
+                                    <button type="submit" class="btn btn-primary mb-2 float-right">Rechercher</button>
                                 </div>
                             </form>
                         </div>
