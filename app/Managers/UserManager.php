@@ -31,7 +31,8 @@ class UserManager{
         }
         $user->role= $request->input('role'); 
         $user->status= $request->input('status');  
-        $user->groupe_id= $request->input('groupe') ;          
+        $user->groupe_id= $request->input('groupe') ;  
+        $user->folder_id= $request->input('folder') ;        
         $user->save();
     }
 }

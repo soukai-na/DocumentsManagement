@@ -51,11 +51,12 @@ Route::prefix('')->middleware('admin')->group(function(){
 
 Route::prefix('')->group(function(){
     Route::get('/document',[DocumentController::class, 'index'])->name('documents');
-    Route::get('/document/{document}',[DocumentController::class, 'edit'])->name('documents.edit');
+    Route::get('/editdocument/{document}',[DocumentController::class, 'edit'])->name('documents.edit');
     Route::get('/document/{document}',[DocumentController::class, 'show'])->name('documents.show');
     Route::get('/{folder:id}/createdocument',[DocumentController::class, 'create'])->name('documents.create');
     Route::post('/document/store',[DocumentController::class,'store'])->name('documents.store');
     Route::put('/document/{document}/update',[DocumentController::class,'update'])->name('documents.update');
+    Route::put('/document/{document}/updateFile',[DocumentController::class,'updateFile'])->name('documents.updateFile');
     Route::delete('/document/{document:id}/delete',[DocumentController::class,'delete'])->name('documents.delete');
     Route::get('/document/download/{document:id}',[DocumentController::class,'download'])->name('documents.download');
 });

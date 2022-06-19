@@ -16,17 +16,6 @@
                                 @method('PUT')
                                 @csrf
                                 <div class="form-group">
-                                    <label for="image">Image</label>
-                                    <input type="file" name="image" class="form-control file-upload-info"
-                                        placeholder="Image d'utilisateur">
-                                    <img src="{{ asset('images/users/' . $user->image) }}" width="70px" height="70px"
-                                        alt="image" />
-
-                                    @error('image')
-                                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
                                     <label for="nom">Nom</label>
                                     <input type="text" name="nom" value="{{ $user->nom }}"
                                         class="form-control @error('nom') is-invalid @enderror"
@@ -71,28 +60,6 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" value="{{ $user->email }}"
-                                        class="form-control @error('email') is-invalid @enderror"
-                                        placeholder="Email d'utilisateur" />
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Mot de passe</label>
-                                    <input type="password" name="password" value="{{ $user->password }}"
-                                        class="form-control @error('password') is-invalid @enderror"
-                                        placeholder="Mot de passe d'utilisateur" />
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
                                     <label for="telephone">Téléphone</label>
                                     <input type="text" name="telephone" value="{{ $user->telephone }}"
                                         class="form-control @error('telephone') is-invalid @enderror"
@@ -104,10 +71,20 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label for="folder">Service</label>
+                                    <select name="folder" class="form-control">
+                                        @foreach ($folders as $folder)
+                                            <option value="{{ $folder->id }}"
+                                                {{ $folder->id === $user->folder->id ? 'selected' : '' }}>
+                                                {{ $folder->designation }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="groupe">Groupe</label>
                                     <select name="groupe" class="form-control">
                                         @foreach ($groupes as $groupe)
-                                            @if ($user->groupe_id != null)
+                                            @if (!empty($user->groupe_id))
                                                 <option value="{{ $groupe->id }}"
                                                     {{ $groupe->id === $user->groupe->id ? 'selected' : '' }}>
                                                     {{ $groupe->nom }}</option>
@@ -120,7 +97,8 @@
                                     <select name="role" class="form-control">
                                         <option value="ADMIN" {{ 'ADMIN' === $user->role ? 'selected' : '' }}>ADMIN
                                         </option>
-                                        <option value="USER" {{ 'USER' === $user->role ? 'selected' : '' }}>USER</option>
+                                        <option value="USER" {{ 'USER' === $user->role ? 'selected' : '' }}>USER
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -132,7 +110,7 @@
                                             INACTIVE</option>
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-primary mr-2">Ajouter l'utilisateur</button>
+                                <button type="submit" class="btn btn-primary mr-2">Modifier l'utilisateur</button>
 
                             </form><a href=" {{ Route('users') }}">
                                 <br>

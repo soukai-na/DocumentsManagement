@@ -85,12 +85,21 @@
                             @enderror
                           </div>
                           <div class="form-group">
+                            <label for="folder">Service</label>
+                            <select name="folder" class="form-control">
+                             @foreach ($folders as $folder)
+                                 <option value="{{ $folder->id }}">{{ $folder->designation}}</option>
+                             @endforeach    
+                            </select> 
+                          </div>
+                          <div class="form-group">
                             <label for="groupe">Groupe</label>
                             <select name="groupe" class="form-control">
                              @foreach ($groupes as $groupe)
-                                 <option value="{{ $groupe->id }}">{{ $groupe->designation}}</option>
+                                 <option value="{{ $groupe->id }}">{{ $groupe->nom}}</option>
                              @endforeach    
                             </select> 
+                          </div>
                           <div class="form-group">
                             <label for="role">Role</label>
                             <select name="role" class="form-control">

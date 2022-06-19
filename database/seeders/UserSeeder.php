@@ -27,6 +27,7 @@ class UserSeeder extends Seeder
             'image' => 'ARROUCHI.jpg',
             'role'=>User::ADMIN_ROLE ,
             'status' => User::ACTIVE_STATUS,
+            'folder_id'=>1,
             'groupe_id'=>1
         ]);
         User::create([
@@ -40,6 +41,7 @@ class UserSeeder extends Seeder
             'image' => 'LASFAR.jpg',
             'role'=>User::USER_ROLE ,
             'status' => User::INACTIVE_STATUS,
+            'folder_id'=>2,
         ]);
     }
 }

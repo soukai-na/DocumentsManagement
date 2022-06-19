@@ -22,18 +22,38 @@
                                         Télécharger
                                     </button>
                                 </a>
-                                <a href="">
+                                <a href="{{ route('documents.edit',$document->id) }}">
                                     <button type="button" class="btn btn-outline-success btn-fw ">
                                         <i class="mdi mdi-pencil"></i>
                                         Modifier
                                     </button>
                                 </a>
-                                <a href="#">
-                                    <button type="button" class="btn btn-outline-danger btn-fw ">
-                                        <i class="mdi mdi-delete"></i>
-                                        Supprimer
-                                    </button>
-                                </a>
+                                <button type="button" class="btn btn-outline-danger btn-fw" onclick="document.getElementById('model-open-{{ $document->id }}').style.display='block'">
+                                    <i class="mdi mdi-delete"></i> Supprimer
+                                </button>
+                                <form action="{{ route('documents.delete' , $document->id) }}" method="POST">
+                                    @csrf
+                                    @method("DELETE")
+                                    <div class="modal" id="model-open-{{ $document->id }}">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title">La suppression d'un document définitivement</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"onclick="document.getElementById('model-open-{{ $document->id }}').style.display='none'" aria-label="Close">
+                                              <span aria-hidden="true"></span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <p>Etes-vous sùr de vouloir supprimer ce document?</p>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Oui</button>
+                                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('model-open-{{ $document->id }}').style.display='none'" data-bs-dismiss="modal">Annuler</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                   </form>
                             </div>
                             <b>Mot clés:</b>
                             @foreach ($document->tags as $tag)

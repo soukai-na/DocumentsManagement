@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Folder;
 use App\Models\Groupe;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -39,7 +40,8 @@ class User extends Authenticatable
         'image',
         'role',
         'status',
-        'groupe_id'
+        'groupe_id',
+        'folder_id',
     ];
 
     /**
@@ -63,5 +65,8 @@ class User extends Authenticatable
 
     public function groupe(){
         return $this->belongsTo(Groupe::class);
+    }
+    public function folder(){
+        return $this->belongsTo(Folder::class);
     }
 }

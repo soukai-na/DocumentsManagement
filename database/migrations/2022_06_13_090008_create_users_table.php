@@ -28,6 +28,8 @@ return new class extends Migration
             $table->string('status');
             $table->unsignedBigInteger('groupe_id')->nullable();
             $table->foreign('groupe_id')->nullable()->references('id')->on('groupes');
+            $table->unsignedBigInteger('folder_id');
+            $table->foreign('folder_id')->references('id')->on('folders');
             $table->rememberToken();
             $table->timestamps();
         });

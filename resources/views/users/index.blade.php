@@ -79,7 +79,7 @@
                                         <li ><strong>Nom en arabe:</strong>   {{ $user->nomar }}</li>
                                         <li ><strong>Préom en arabe:</strong>   {{ $user->prenomar }}</li>
                                         <li ><strong>Téléphone:</strong>   {{ $user->telephone }}</li>
-                                        
+                                        <li><strong>Service:</strong>   {{ $user->folder->designation }}</li>
                                         <li><strong>Groupe:</strong>   {{ $user->groupe_id }}</li>
                                         <li><strong>Crée le:</strong>   {{ $user->dateFormatted() }}</li>
                                       </ul>

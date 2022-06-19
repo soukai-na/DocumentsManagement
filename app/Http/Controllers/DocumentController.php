@@ -7,6 +7,7 @@ use App\Models\Folder;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Managers\DocumentManager;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\DocumentRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
@@ -32,62 +33,90 @@ class DocumentController extends Controller
 
     public function create(Folder $folder)
     {
-        return view('documents.create',[
-            'folders'=>Folder::all(),
-            'folder'=>$folder,
-            'users'=>User::all(),
+        return view('documents.create', [
+            'folders' => Folder::all(),
+            'folder' => $folder,
+            'users' => User::all(),
         ]);
     }
 
     public function show(Document $document)
     {
-        return view('documents.show', compact('document'),[
-            'users'=>User::all(),
+        return view('documents.show', compact('document'), [
+            'users' => User::all(),
         ]);
     }
 
     public function download($id)
     {
-        $dl=Document::find($id);
+        $dl = Document::find($id);
         // return Storage::download($dl->destination, $dl->designation);
 
-        $file= public_path(). "/documents/".$dl->file;
+        $file = public_path() . "/documents/" . $dl->file;
 
-    $headers = array(
-              'Content-Type: application/pdf',
-            );
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
 
-    return Response::download($file, $dl->file, $headers);
+        return Response::download($file, $dl->file, $headers);
     }
 
     public function store(DocumentRequest $request)
     {
-        $validated=$request->validated();
+        $validated = $request->validated();
 
-        $this->documentManager->build(new Document(),$request);  
+        $this->documentManager->build(new Document(), $request);
 
-        return redirect()->route('folders.index')->with('success',"le document a bien été sauvegardé!");
+        return redirect()->route('folders.index')->with('success', "le document a bien été sauvegardé!");
     }
 
 
     public function edit(Document $document)
     {
-        return view('documents.edit',[
-            'document'=>$document
+        return view('documents.edit', [
+            'document' => $document
         ]);
     }
 
-    public function update(DocumentRequest $request,Document $document)
+    public function update(Request $request, Document $document)
     {
-        $this->documentManager->build($document,$request);   
+        $request->validate([
+            'designation' => 'required',
+            'description' => 'required',
+        ]);
 
-         return redirect()->route('documents')->with('success',"le document a bien été modifié!");
+        $document->update($request->all());
+
+        return redirect()->route('documents')->with('success', "le document a bien été modifié!");
+    }
+    public function updateFile(Request $request, Document $document)
+    {
+        $request->validate([
+            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,doc,docx,mp3,mp4,jpeg,png,jpg,gif,svg|max:2048',
+            'type' => 'required',
+        ]);
+
+        $input = $request->all();
+
+
+        if ($file = $request->file('file')) {
+            $destinationPath = 'documents/';
+            $profileFile = $document->designation . "." . $file->getClientOriginalExtension();
+            $file->move($destinationPath, $profileFile);
+            $input['file'] = "$profileFile";
+        } else {
+            unset($input['file']);
+        }
+
+        $document->update($input);
+
+        return redirect()->route('documents')->with('success', "le document a bien été modifié!");
     }
 
 
     public function delete(Document $document)
     {
         $document->delete();
-        return redirect()->route('documents')->with('success',"le document a bien été supprimé!");
+        return redirect()->route('documents')->with('success', "le document a bien été supprimé!");
     }
 }
