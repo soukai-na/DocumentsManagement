@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control" name="type" id="exampleSelectGender">
+                                    <select class="form-control" name="typeFolder" id="exampleSelectGender">
                                         <option selected disabled>Type de dossier</option>
                                         <option value="service">Service</option>
                                         <option value="sousservice">Sous Service</option>
@@ -50,7 +50,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control" name="type" id="exampleSelectGender">
+                                    <select class="form-control" name="typeDoc" id="exampleSelectGender">
                                         <option selected disabled>Type de fichier</option>
                                         <option value="image">Image</option>
                                         <option value="video">Vidéo</option>

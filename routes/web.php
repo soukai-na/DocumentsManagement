@@ -25,9 +25,10 @@ Route::get('/', function () { return view('welcome'); })->middleware('admin')->n
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'doc'])->name('home');
+Route::get('/files',[DocumentController::class, 'files'])->name('files');
 
-Route::prefix('')->middleware('admin')->group(function(){
+Route::prefix('')->group(function(){
     Route::get('/folders', [FolderController::class, 'index'])->name('folders.index');
     Route::get('/folders/{folder:id}',[FolderController::class, 'tri'])->name('folders.tri');
     Route::get('/createfolder',[FolderController::class,'create'])->name('folders.create');

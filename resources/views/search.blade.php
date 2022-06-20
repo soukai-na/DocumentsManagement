@@ -5,7 +5,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Page d'accueil</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $key }}, {{ $tag }}, {{$date}}</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $key }}, {{ $typeDoc }}</li>
                 </ol>
             </nav>
             <div class="row">

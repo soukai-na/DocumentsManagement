@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -25,4 +27,38 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function doc()
+    {
+        $id=Auth::user()->id;
+        $folders = DB::table('folders')->where('id', $id)->get();
+        
+        $folder_id=$id;
+        return view(
+            'home',
+            [
+                'folders' => $folders
+            ]
+        );
+      
+    
+    }
+
+
+    public function files()
+    {
+        $id=Auth::user()->id;
+        $documents = DB::table('documents')->where('id', $id)->get();
+        
+        $folder_id=$id;
+        return view(
+            '',
+            [
+                'documents' => $documents
+            ]
+        );
+      
+    
+    }
+
 }
