@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Folder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -28,6 +29,17 @@ class HomeController extends Controller
         return view('home');
     }
 
+
+    public function welcome()
+    {
+        $folders = Folder::all();
+        return view('welcome',
+        [
+            'folders' => $folders
+        ]);
+    }
+
+    
     public function doc()
     {
         $id=Auth::user()->id;

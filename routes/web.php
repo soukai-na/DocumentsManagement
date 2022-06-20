@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Models\Groupe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\GroupeController;
@@ -21,11 +22,12 @@ use App\Http\Controllers\DocumentController;
 |
 */
 
-Route::get('/', function () { return view('welcome'); })->middleware('admin')->name('welcome');
+
+Route::get('/', [HomeController::class, 'welcome'])->middleware('admin')->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'doc'])->name('home');
+Route::get('/home', [HomeController::class, 'doc'])->name('home');
 Route::get('/files',[DocumentController::class, 'files'])->name('files');
 
 Route::prefix('')->group(function(){

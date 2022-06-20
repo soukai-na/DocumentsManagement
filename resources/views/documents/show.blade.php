@@ -55,7 +55,7 @@
                                     </div>
                                    </form>
                             </div>
-                            <b>Mot clés:</b>
+                            <b>Mots clés:</b>
                             @foreach ($document->tags as $tag)
                                 <label class="badge badge-info mb-5">{{ $tag->name }}</label>
                             @endforeach

@@ -73,6 +73,8 @@ class UserController extends Controller
             'role' => 'required',
             'status' => 'required'
         ]);
+        $user->groupe_id= $request->input('groupe') ;  
+        $user->folder_id= $request->input('folder') ; 
 
         $user->update($request->all());
 

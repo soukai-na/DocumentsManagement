@@ -6,6 +6,7 @@ use App\Models\Folder;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use Conner\Tagging\Model\Tag;
+use Conner\Tagging\Model\Tagged;
 
 class SearchController extends Controller
 {
@@ -16,12 +17,26 @@ class SearchController extends Controller
         $date=trim($request->get('date'));
         $typeDoc=trim($request->get('typeDoc'));
 
-        $documents = Document::query()
+        if($key){
+            $documents = Document::query()
             ->where('designation', 'like', "%{$key}%")
             ->orWhere('file', 'like', "%{$key}%")
-            ->orWhere('type','like', "'{$typeDoc}'")
             ->orderBy('created_at', 'desc')
             ->get();
+        }
+        if($typeDoc){
+            $documents = Document::query()
+            ->where('type','like', "%{$typeDoc}%")
+            ->orderBy('created_at', 'desc')
+            ->get();
+        }
+
+        if($tag){
+            $documents =Tagged::query()
+            ->where('tag_slug', 'like', "%{$tag}%")
+            ->get();
+        }
+        
 
         $folders = Folder::all();
 

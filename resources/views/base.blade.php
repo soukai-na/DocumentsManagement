@@ -101,7 +101,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('folders.index') }}">
                                 <i class="icon-folder menu-icon"></i>
-                                <span class="menu-title">Dossiers</span>
+                                <span class="menu-title">Services</span>
                             </a>
                         </li>
                         <li class="nav-item">

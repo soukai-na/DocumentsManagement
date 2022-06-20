@@ -14,7 +14,7 @@
                 </ol>
             </nav>
             <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
+                <div class="col-md-6 grid-margin stretch-card">
                     <div class="card ">
                         <div class="card-body justify-content-center">
                             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input type="text" name="tag" class="form-control"
-                                            placeholder="Rechercher par mot clé" aria-label="Recipient's username">
+                                            placeholder="Rechercher par mots clés" aria-label="Recipient's username">
                                         <div class="input-group-append">
                                         </div>
                                     </div>
@@ -72,6 +72,55 @@
                                     <button type="submit" class="btn btn-primary mb-2 float-right">Rechercher</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"></h4>
+                            <p class="card-description">
+
+                            </p>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                 
+                                            </th>
+                                            <th>
+                                                Designation
+                                            </th>
+                                            <th>
+                                                Arabe designation
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    @foreach ($folders as $folder)
+                                        @if (empty($folder->folder_id))
+                                            <tbody>
+                                                <tr>
+                                                    <td class="py-1"
+                                                        onclick="document.location='{{ route('folders.tri', $folder->id) }}'"
+                                                        style="cursor:pointer;">
+                                                        <img src="../../images/folder.png"
+                                                            style="border-radius: 0%; cursor: pointer;" alt="image" />
+                                                    </td>
+                                                    <td>
+                                                        {{ $folder->designation }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $folder->designationar }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        @endif
+                                    @endforeach
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,7 @@
                 <a  href="{{ route('folders.create') }}"> 
                   <button type="button" class="btn btn-inverse-info btn-fw">
                     <i class="mdi mdi-plus"></i>
-                      Ajouter un dossier
+                      Ajouter un service
                     </button>
                 </a>
                 <h4 class="card-title"></h4>
