@@ -41,9 +41,19 @@ class DocumentController extends Controller
     }
 
     public function show(Document $document)
-    {
+    { 
+      $fileSize = File::size(public_path('documents/'.$document->file.''));
+
+      function formatBytes($fileSize, $precision = 2)
+      {
+        $base = log($fileSize, 1024);
+        $suffixes = array('', 'K', 'M', 'G', 'T');   
+        
+        return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
+      }
         return view('documents.show', compact('document'), [
             'users' => User::all(),
+            'fileSize'=>formatBytes($fileSize)
         ]);
     }
 

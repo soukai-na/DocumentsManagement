@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <h4 class="card-title"></h4>
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-striped" id="table" data-addrbar="true" data-pagination="true" data-search="true" data-side-pagination="server" class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>Designation </th>
@@ -49,6 +49,7 @@
                                         </tbody>
                                     @endforeach
                                 </table>
+                                
                             </div>
                         </div>
                         <div class='d-flex justify-content-center mt-5'>

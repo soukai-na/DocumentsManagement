@@ -115,26 +115,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
-                                aria-controls="auth">
+                            <a class="nav-link" href="{{ route('compte') }}">
                                 <i class="icon-head menu-icon"></i>
                                 <span class="menu-title">Compte</span>
-                                <i class="menu-arrow"></i>
                             </a>
-                            <div class="collapse" id="auth">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login
-                                        </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html">
-                                            Login 2 </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html">
-                                            Register </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html">
-                                            Register 2 </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html">
-                                            Lockscreen </a></li>
-                                </ul>
-                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="docs/documentation.html">
@@ -160,26 +144,10 @@
                             </li>
                         @endif
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
-                                aria-controls="auth">
+                            <a class="nav-link"  href="{{ route('compte') }}">
                                 <i class="icon-head menu-icon"></i>
                                 <span class="menu-title">Compte</span>
-                                <i class="menu-arrow"></i>
                             </a>
-                            <div class="collapse" id="auth">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login
-                                        </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html">
-                                            Login 2 </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html">
-                                            Register </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html">
-                                            Register 2 </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html">
-                                            Lockscreen </a></li>
-                                </ul>
-                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="docs/documentation.html">
@@ -211,6 +179,7 @@
     <script src="../../js/off-canvas.js"></script>
     <script src="../../js/hoverable-collapse.js"></script>
     <script src="../../js/template.js"></script>
+    <script src="../../js/bootstrap-table-addrbar.js"></script>
     <!-- endinject -->
     <!-- plugin js for this page -->
     <script src="../../vendors/chart.js/Chart.min.js"></script>

@@ -32,6 +32,34 @@ class UserController extends Controller
         );
     }
 
+    public function compte()
+    {
+
+        
+        return view('users.compte');
+    }
+    public function compteUpdate(Request $request, User $user){
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $input = $request->all();
+
+
+        if ($file = $request->file('image')) {
+            $destinationPath = 'images/users/';
+            $profileFile = $user->nom . "." . $file->getClientOriginalExtension();
+            $file->move($destinationPath, $profileFile);
+            $input['image'] = "$profileFile";
+        } else {
+            unset($input['image']);
+        }
+
+        $user->update($input);
+
+        return redirect()->route('compte');
+    }
+
     public function create()
     {
         $folders = DB::table('folders')->where('folder_id', NULL)->get();

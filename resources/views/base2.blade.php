@@ -118,26 +118,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
-                                aria-controls="auth">
+                            <a class="nav-link" href="{{ route('compte') }}">
                                 <i class="icon-head menu-icon"></i>
                                 <span class="menu-title">Compte</span>
-                                <i class="menu-arrow"></i>
                             </a>
-                            <div class="collapse" id="auth">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login
-                                        </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html">
-                                            Login 2 </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html">
-                                            Register </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html">
-                                            Register 2 </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html">
-                                            Lockscreen </a></li>
-                                </ul>
-                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="docs/documentation.html">
@@ -163,26 +147,10 @@
                             </li>
                         @endif
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
-                                aria-controls="auth">
+                            <a class="nav-link" href="{{ route('compte') }}" >
                                 <i class="icon-head menu-icon"></i>
                                 <span class="menu-title">Compte</span>
-                                <i class="menu-arrow"></i>
                             </a>
-                            <div class="collapse" id="auth">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login
-                                        </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html">
-                                            Login 2 </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html">
-                                            Register </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html">
-                                            Register 2 </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html">
-                                            Lockscreen </a></li>
-                                </ul>
-                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="docs/documentation.html">
@@ -208,6 +176,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.20.2/extensions/addrbar/bootstrap-table-addrbar.min.js" integrity="sha512-YURXGofJXEjxPdLT6uAxDkblqsJfLkZNK8VnM/JLQrdsbvFQuXQP1PxFDGYZKz7VruIQhO7T75OL8ykrLbFTVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- base:js -->
     <script src="../vendors/base/vendor.bundle.base.js"></script>
 

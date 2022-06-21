@@ -61,11 +61,12 @@
                             @endforeach
                             <h2 class="card-title">{{ $document->designation }}</h2>
                             <p class="card-description">
-                                <b>Crée par:</b> admin <br>
-                                <b>Date de création:</b> {{ $document->dateFormatted() }}
+                                <b style="color:#3774fc;">Crée par:</b> admin <br>
+                                <b style="color:#3774fc;">Taille de fichier:</b>  {{ $fileSize }}<br>
+                                <b style="color:#3774fc;">Date de création:</b> {{ $document->dateFormatted() }}
                             </p>
                             <p class="card-description">
-                                <b>Description:</b><br>{{ $document->description }}
+                                <b style="color:#3774fc;">Description:</b><br>{{ $document->description }}
                             </p>
 
                             @switch($document->type)

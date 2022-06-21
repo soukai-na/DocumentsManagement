@@ -23,7 +23,11 @@ use App\Http\Controllers\DocumentController;
 */
 
 
+
 Route::get('/', [HomeController::class, 'welcome'])->middleware('admin')->name('welcome');
+
+Route::get('/compte',[UserController::class, 'compte'])->name('compte');
+Route::put('{user}/compteUpdate',[UserController::class,'compteUpdate'])->name('compte.updatePhoto');
 
 Auth::routes();
 
