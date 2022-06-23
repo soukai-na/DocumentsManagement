@@ -7,8 +7,11 @@ use App\Models\Folder;
 use App\Models\Groupe;
 use Illuminate\Http\Request;
 use App\Managers\UserManager;
+use App\Rules\MatchOldPassword;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -34,11 +37,11 @@ class UserController extends Controller
 
     public function compte()
     {
-
-        
         return view('users.compte');
     }
-    public function compteUpdate(Request $request, User $user){
+
+    public function compteUpdate(Request $request, User $user)
+    {
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -58,6 +61,23 @@ class UserController extends Controller
         $user->update($input);
 
         return redirect()->route('compte');
+    }
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("status", "Password changed successfully!");
     }
 
     public function create()
@@ -101,8 +121,8 @@ class UserController extends Controller
             'role' => 'required',
             'status' => 'required'
         ]);
-        $user->groupe_id= $request->input('groupe') ;  
-        $user->folder_id= $request->input('folder') ; 
+        $user->groupe_id = $request->input('groupe');
+        $user->folder_id = $request->input('folder');
 
         $user->update($request->all());
 

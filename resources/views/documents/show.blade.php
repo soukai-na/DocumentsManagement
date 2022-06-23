@@ -72,7 +72,7 @@
                             @switch($document->type)
                                 @case('image')
                                     <center>
-                                        <img src="{{ url('documents/' . $document->file) }}" alt="image" />
+                                        <img src="{{ url('documents/' . $document->file) }}" style="width: 100%; max-width: 720px" alt="image" />
                                     </center>
                                 @break
 

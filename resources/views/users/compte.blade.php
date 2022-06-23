@@ -28,32 +28,45 @@
                             </div>
                             <div class="collapse" id="mdp">
                                 <div class="card card-body">
-                                    <form class="forms-sample" method="POST" action="">
+                                    <form class="forms-sample" data-parsley-validate
+                                        action="{{ route('compte.updatePassword') }}" method="POST">
+                                        @csrf
+
+                                        @if (session('status'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('status') }}
+                                            </div>
+                                        @elseif (session('error'))
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ session('error') }}
+                                            </div>
+                                        @endif
+
                                         <div class="form-group">
-                                            <input type="text" name="telephone" value=""
-                                                class="form-control @error('telephone') is-invalid @enderror"
+                                            <input type="password" name="old_password"
+                                                class="form-control @error('old_password') is-invalid @enderror"
                                                 placeholder="Le mot de passe actuel" />
-                                            @error('telephone')
+                                            @error('old_password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="telephone" value=""
-                                                class="form-control @error('telephone') is-invalid @enderror"
+                                            <input type="password" name="new_password"
+                                                class="form-control @error('new_password') is-invalid @enderror"
                                                 placeholder="Le nouveau mot de passe" />
-                                            @error('telephone')
+                                            @error('new_password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="telephone" value=""
-                                                class="form-control @error('telephone') is-invalid @enderror"
+                                            <input type="password" name="new_password_confirmation"
+                                                class="form-control @error('new_password_confirmation') is-invalid @enderror"
                                                 placeholder="Confirmer le nouveau mot de passe" />
-                                            @error('telephone')
+                                            @error('new_password_confirmation')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

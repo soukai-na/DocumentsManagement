@@ -28,6 +28,7 @@ Route::get('/', [HomeController::class, 'welcome'])->middleware('admin')->name('
 
 Route::get('/compte',[UserController::class, 'compte'])->name('compte');
 Route::put('{user}/compteUpdate',[UserController::class,'compteUpdate'])->name('compte.updatePhoto');
+Route::post('/updatePassword',[UserController::class,'updatePassword'])->name('compte.updatePassword');
 
 Auth::routes();
 
