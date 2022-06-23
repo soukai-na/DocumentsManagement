@@ -19,9 +19,8 @@
                                     <thead>
                                         <tr>
                                             <th>Designation </th>
-                                            <th>Description</th>
-                                            <th>File</th>
                                             <th>Type</th>
+                                            <th>File</th>
                                             <th>Date de création</th>
                                         </tr>
                                     </thead>
@@ -33,14 +32,11 @@
                                                     {{ $document->designation }}
                                                 </td>
                                                 <td>
-                                                    {{ $document->description }}
+                                                    {{ $document->type }}
                                                 </td>
                                                 <td class="py-1">
                                                     <a target="_blank"
                                                         href="{{ url('documents/' . $document->file) }}">{{ $document->file }}</a>
-                                                </td>
-                                                <td>
-                                                    {{ $document->type }}
                                                 </td>
                                                 <td>
                                                     {{ $document->dateFormatted() }}

@@ -22,7 +22,8 @@ class DocumentManager{
             $document->file=$filename;
         } 
         $document->type=$request->input('type'); 
-        
+        $document->taille=$request->input('taille'); 
+        $document->qrcode=$request->input('qrcode'); 
     	$tags = explode(",", $request->tags);
 
     	

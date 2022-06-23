@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('file');
             $table->string('type');
+            $table->double('taille');
+            $table->string('qrcode');
             $table->unsignedBigInteger('folder_id');
             $table->foreign('folder_id')->references('id')->on('folders');
             $table->unsignedBigInteger('user_id');

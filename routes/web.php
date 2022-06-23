@@ -32,6 +32,8 @@ Route::post('/updatePassword',[UserController::class,'updatePassword'])->name('c
 
 Auth::routes();
 
+
+
 Route::get('/home', [HomeController::class, 'doc'])->name('home');
 Route::get('/files',[DocumentController::class, 'files'])->name('files');
 

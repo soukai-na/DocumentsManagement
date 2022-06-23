@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\File;
 use App\Http\Requests\DocumentRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class DocumentController extends Controller
 {
@@ -73,6 +74,7 @@ class DocumentController extends Controller
 
     public function store(DocumentRequest $request)
     {
+        
         $validated = $request->validated();
 
         $this->documentManager->build(new Document(), $request);

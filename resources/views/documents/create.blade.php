@@ -70,6 +70,16 @@
                         </div>
                         <div class="form-group">
                             
+                          <input type="hidden" name="taille" class="form-control @error('taille') is-invalid @enderror" value="120.5" />
+                          
+                        </div>
+                        <div class="form-group">
+                            
+                          <input type="hidden" name="qrcode" class="form-control @error('qrcode') is-invalid @enderror" value="image.jpg" />
+                          
+                        </div>
+                        <div class="form-group">
+                            
                           <input type="hidden" name="user" class="form-control @error('user') is-invalid @enderror" value="{{ Auth::user()->id }}" />
                           
                         </div>
