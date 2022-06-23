@@ -32,12 +32,27 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        $folders = Folder::all();
+        $folders = Folder::all(); 
+        $images = DB::table('documents')->where('type', 'image')->count(); 
+        $videos = DB::table('documents')->where('type', 'video')->count(); 
+        $audios = DB::table('documents')->where('type', 'audio')->count(); 
+        $pdf = DB::table('documents')->where('type', 'pdf')->count(); 
+        $word = DB::table('documents')->where('type', 'word')->count(); 
+        $excel = DB::table('documents')->where('type', 'excel')->count(); 
+        $txt = DB::table('documents')->where('type', 'txt')->count();
         return view('welcome',
         [
-            'folders' => $folders
+            'folders' => $folders,
+            'images' => $images,
+            'videos' => $videos,
+            'audios' => $audios,
+            'pdf' => $pdf,
+            'word' => $word,
+            'excel' => $excel,
+            'txt' => $txt,
         ]);
     }
+   
 
     
     public function doc()

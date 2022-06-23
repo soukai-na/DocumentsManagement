@@ -12,63 +12,63 @@
                     <div class="col-md-3 mb-4 stretch-card transparent">
                         <div class="card card-tale" style="background: #2196f3;color: white; border-radius: 20px;">
                             <div class="card-body">
-                                <p class="mb-4">Today’s Bookings</p>
-                                <p class="fs-30 mb-2">4006</p>
-                                <p>10.00% (30 days)</p>
+                                <h4 class="mb-2"><i class="mdi  mdi-file-image"></i> Images</h4>
+                                <h3 class="mb-2">{{ $images }}</h3>
+                                <p>(jpg, jpeg, png, svg, gif...)</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 mb-4 stretch-card transparent">
                         <div class="card card-dark-blue" style="background: #3f51b5;color: white; border-radius: 20px;">
                             <div class="card-body">
-                                <p class="mb-4">Total Bookings</p>
-                                <p class="fs-30 mb-2">61344</p>
-                                <p>22.00% (30 days)</p>
+                                <h4 class="mb-2"><i class="mdi  mdi-file-video"></i> Vidéos</h4>
+                                <h3 class="mb-2">{{ $videos }}</h3>
+                                <p> (mp4, mov...)</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 mb-4  stretch-card transparent">
                         <div class="card card-light-blue" style="background: #8bc34a;color: white; border-radius: 20px;">
                             <div class="card-body">
-                                <p class="mb-4">Number of Meetings</p>
-                                <p class="fs-30 mb-2">34040</p>
-                                <p>2.00% (30 days)</p>
+                                <h4 class="mb-2"><i class="mdi  mdi-file-music"></i> Audios</h4>
+                                <h3 class="mb-2">{{ $audios }}</h3>
+                                <p>(mp3...)</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 mb-4 stretch-card transparent">
                         <div class="card card-light-danger" style="background: #009688;color: white; border-radius: 20px;">
                             <div class="card-body">
-                                <p class="mb-4">Number of Clients</p>
-                                <p class="fs-30 mb-2">47033</p>
-                                <p>0.22% (30 days)</p>
+                                <h4 class="mb-2"><i class="mdi  mdi-file-pdf"></i>Fichier PDF</h4>
+                                <h3 class="mb-2">{{ $pdf }}</h3>
+                                <p>(pdf...)</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 mb-4 stretch-card transparent">
                         <div class="card card-tale" style="background: #965bff;color: white; border-radius: 20px;">
                             <div class="card-body">
-                                <p class="mb-4">Today’s Bookings</p>
-                                <p class="fs-30 mb-2">4006</p>
-                                <p>10.00% (30 days)</p>
+                                <h4 class="mb-2"><i class="mdi mdi-file-word"></i>Fichier Word</h4>
+                                <h3 class="mb-2">{{ $word }}</h3>
+                                <p>(doc, docx...)</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 mb-4 stretch-card transparent">
                         <div class="card card-tale" style="background: #e95889;color: white; border-radius: 20px;">
                             <div class="card-body">
-                                <p class="mb-4">Today’s Bookings</p>
-                                <p class="fs-30 mb-2">4006</p>
-                                <p>10.00% (30 days)</p>
+                                <h4 class="mb-2"><i class="mdi mdi-file-excel"></i>Fichier Excel</h4>
+                                <h3 class="mb-2">{{ $excel }}</h3>
+                                <p>(csv, xlx, xls...)</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 mb-4 stretch-card transparent">
                         <div class="card card-tale" style="background: #607d8b;color: white; border-radius: 20px;">
                             <div class="card-body">
-                                <p class="mb-4">Today’s Bookings</p>
-                                <p class="fs-30 mb-2">4006</p>
-                                <p>10.00% (30 days)</p>
+                                <h4 class="mb-2"><i class="mdi  mdi-file-document"></i> Fichier texte</h4>
+                                <h3 class="mb-2">{{ $txt }}</h3>
+                                <p>(txt...)</p>
                             </div>
                         </div>
                     </div>
