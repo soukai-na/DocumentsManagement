@@ -21,6 +21,7 @@
                                             <th>Designation </th>
                                             <th>Type</th>
                                             <th>File</th>
+                                            <th>QR Code</th>
                                             <th>Date de création</th>
                                         </tr>
                                     </thead>
@@ -37,6 +38,9 @@
                                                 <td class="py-1">
                                                     <a target="_blank"
                                                         href="{{ url('documents/' . $document->file) }}">{{ $document->file }}</a>
+                                                </td>
+                                                <td>
+                                                    {!! DNS2D::getBarcodeHTML($document->file, 'QRCODE',3,3) !!}
                                                 </td>
                                                 <td>
                                                     {{ $document->dateFormatted() }}

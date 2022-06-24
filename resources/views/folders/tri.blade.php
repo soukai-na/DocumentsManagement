@@ -13,7 +13,7 @@
             </nav>
             <div class="row">
                 <center class="mt-3 mb-3">
-                    <h2 style="color: #3e74fc;">{{ $desg }}</h2>
+                    <h2 style="color: #3e74fc;"><i class="mdi mdi-folder-outline"> {{ $desg }}</i></h2>
                 </center>
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">

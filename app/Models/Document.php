@@ -23,8 +23,6 @@ class Document extends Model
         'description',
         'file',
         'type',
-        'taille',
-        'qrcode',
         'folder_id',
         'user_id'
     ];

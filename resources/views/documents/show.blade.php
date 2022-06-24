@@ -68,6 +68,7 @@
                             <p class="card-description">
                                 <b style="color:#3774fc;">Description:</b><br>{{ $document->description }}
                             </p>
+                            <p class="float-right">{!! DNS2D::getBarcodeHTML($document->designation, 'QRCODE') !!}</p>
 
                             @switch($document->type)
                                 @case('image')

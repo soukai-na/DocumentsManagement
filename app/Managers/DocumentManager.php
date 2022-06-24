@@ -3,6 +3,7 @@
 namespace App\Managers;
 
 use App\Models\Document;
+use Milon\Barcode\DNS2D;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\DocumentRequest;
 
@@ -22,12 +23,9 @@ class DocumentManager{
             $document->file=$filename;
         } 
         $document->type=$request->input('type'); 
-        $document->taille=$request->input('taille'); 
-        $document->qrcode=$request->input('qrcode'); 
     	$tags = explode(",", $request->tags);
 
-    	
-
+    
         $document->folder_id= $request->input('folder') ;
         $document->user_id=$request->input('user'); 
         $document->save();
