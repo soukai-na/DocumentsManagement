@@ -12,24 +12,32 @@
                 </ol>
             </nav>
             <div class="row">
-                <center class="mt-3 mb-3">
-                    <h2 style="color: #3e74fc;"><i class="mdi mdi-folder-outline"> {{ $desg }}</i></h2>
-                </center>
+                <div class="row d-block mb-3">
+                    <a href="{{ route('documents.create', $f_id) }}">
+                        <button type="button" class="btn btn-inverse-primary btn-fw">
+                            <i class="mdi mdi-upload"></i>
+                            Importer un fichier
+                        </button>
+                    </a>
+                    <a href="{{ route('folders.tricreate', $f_id) }} ">
+                        <button type="button" class="btn btn-inverse-info btn-fw">
+                            <i class="mdi mdi-plus"></i>
+                            Ajouter un dossier
+                        </button>
+                    </a>
+                </div>
+
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('documents.create', $f_id) }}">
-                                <button type="button" class="btn btn-inverse-primary btn-fw">
-                                    <i class="mdi mdi-upload"></i>
-                                    Importer un fichier
-                                </button>
-                            </a>
-                            <a href="{{ route('folders.tricreate', $f_id) }} ">
-                                <button type="button" class="btn btn-inverse-info btn-fw">
-                                    <i class="mdi mdi-plus"></i>
-                                    Ajouter un dossier
-                                </button>
-                            </a>
+                            <div class="mt-3 mb-5 d-flex">
+
+                                <h2>
+                                    <img src="../../images/folder.png"
+                                        style="border-radius: 0%; cursor: pointer; max-width:4%;" alt="image" />
+                                    {{ $desg }}
+                                </h2>
+                            </div>
                             <h4 class="card-title"></h4>
                             <p class="card-description">
 

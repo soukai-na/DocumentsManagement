@@ -72,6 +72,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-3 mb-4 stretch-card transparent">
+                        <div class="card card-tale" style="background: #a79ad6;color: white; border-radius: 20px;">
+                            <div class="card-body">
+                                <h4 class="mb-2"><i class="mdi   mdi-package-variant-closed"></i> Total</h4>
+                                <h3 class="mb-2">{{ $total }}</h3>
+                                <p>(jpg, jpeg, png, svg, gif, mp4, mov, mp3, pdf, doc, docx, csv, xlx, xls, txt...)</p>
+                            </div>
+                        </div>
+                    </div>
             </div>
             <div class="row">
                 <div class="col-md-6 grid-margin stretch-card">

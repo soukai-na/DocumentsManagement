@@ -40,6 +40,7 @@ class HomeController extends Controller
         $word = DB::table('documents')->where('type', 'word')->count(); 
         $excel = DB::table('documents')->where('type', 'excel')->count(); 
         $txt = DB::table('documents')->where('type', 'txt')->count();
+        $total = DB::table('documents')->count();
         return view('welcome',
         [
             'folders' => $folders,
@@ -50,6 +51,7 @@ class HomeController extends Controller
             'word' => $word,
             'excel' => $excel,
             'txt' => $txt,
+            'total' => $total,
         ]);
     }
    

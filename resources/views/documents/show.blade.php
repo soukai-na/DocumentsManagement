@@ -22,6 +22,12 @@
                                         Télécharger
                                     </button>
                                 </a>
+                                <a href="">
+                                    <button type="button" class="btn btn-outline-dark btn-fw">
+                                        <i class="mdi mdi-archive"></i>
+                                        Archiver
+                                    </button>
+                                </a>
                                 <a href="{{ route('documents.edit',$document->id) }}">
                                     <button type="button" class="btn btn-outline-success btn-fw ">
                                         <i class="mdi mdi-pencil"></i>
@@ -107,6 +113,7 @@
                                     <center>
                                         <a href="{{ url('documents/' . $document->file) }}" target="_blank">Ouvrir le fichier
                                             word</a>
+                                            <iframe src="https://view.officeapps.live.com/op/view.aspx?src={{ url('documents/' . $document->file) }}" frameborder="0"></iframe>
                                     </center>
                                 @break
 
