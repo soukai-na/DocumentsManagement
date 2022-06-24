@@ -89,6 +89,7 @@ class FolderController extends Controller
     public function tri($id)
     {
         $folders = DB::table('folders')->where('folder_id', $id)->get();
+        $query = DB::table('folders')->where('id', $id)->value('designation');
         $documents=DB::table('documents')->where('folder_id',$id)->get();
         
         $folder_id=$id;
@@ -97,7 +98,8 @@ class FolderController extends Controller
             [
                 'folders' => $folders,
                 'documents'=>$documents,
-                'folder_id' => $id
+                'f_id' => $id,
+                'desg'=>$query
             ]
         );
       

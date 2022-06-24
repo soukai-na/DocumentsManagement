@@ -7,21 +7,24 @@
                     <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Page d'accueil</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('folders.index') }}">services</a></li>
                     @foreach ($folders as $folder)
-                        <li class="breadcrumb-item active" aria-current="page">{{ $folder->folder_id }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $desg }}</li>
                     @endforeach
                 </ol>
             </nav>
             <div class="row">
+                <center class="mt-3 mb-3">
+                    <h2 style="color: #3e74fc;">{{ $desg }}</h2>
+                </center>
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('documents.create', $folder_id) }}">
+                            <a href="{{ route('documents.create', $f_id) }}">
                                 <button type="button" class="btn btn-inverse-primary btn-fw">
                                     <i class="mdi mdi-upload"></i>
                                     Importer un fichier
                                 </button>
                             </a>
-                            <a href="{{ route('folders.tricreate', $folder_id) }} ">
+                            <a href="{{ route('folders.tricreate', $f_id) }} ">
                                 <button type="button" class="btn btn-inverse-info btn-fw">
                                     <i class="mdi mdi-plus"></i>
                                     Ajouter un dossier
@@ -83,7 +86,8 @@
                                                                         <li><strong>Arabe Designation:</strong>
                                                                             {{ $folder->designationar }}</li>
                                                                         <li><strong>Crée le:</strong>
-                                                                            {{ $folder->created_at }}</li>
+                                                                            {{ $folder->created_at }}
+                                                                        </li>
                                                                     </ul>
                                                                 </div>
                                                                 <div class="modal-footer">
