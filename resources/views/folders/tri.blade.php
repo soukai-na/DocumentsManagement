@@ -19,23 +19,22 @@
                             Importer un fichier
                         </button>
                     </a>
+                    @if (Auth::user()->role == 'ADMIN')
                     <a href="{{ route('folders.tricreate', $f_id) }} ">
                         <button type="button" class="btn btn-inverse-info btn-fw">
                             <i class="mdi mdi-plus"></i>
                             Ajouter un dossier
                         </button>
                     </a>
+                    @endif
                 </div>
 
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
                             <div class="mt-3 mb-5 d-flex">
-
-                                <h2>
-                                    <img src="../../images/folder.png"
-                                        style="border-radius: 0%; cursor: pointer; max-width:4%;" alt="image" />
-                                    {{ $desg }}
+                                <i class="mdi mdi-menu-right mdi-36px" style="color:#f5d360;"></i>
+                                <h2>{{ $desg }}
                                 </h2>
                             </div>
                             <h4 class="card-title"></h4>

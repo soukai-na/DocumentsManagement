@@ -7,6 +7,7 @@ use App\Models\Folder;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Managers\DocumentManager;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\DocumentRequest;
 use Illuminate\Support\Facades\Storage;
@@ -44,6 +45,7 @@ class DocumentController extends Controller
     public function show(Document $document)
     { 
       $fileSize = File::size(public_path('documents/'.$document->file.''));
+      $user = DB::table('users')->where('id', $document->user_id)->value('nom');
 
       function formatBytes($fileSize, $precision = 2)
       {
@@ -54,7 +56,8 @@ class DocumentController extends Controller
       }
         return view('documents.show', compact('document'), [
             'users' => User::all(),
-            'fileSize'=>formatBytes($fileSize)
+            'fileSize'=>formatBytes($fileSize),
+            'user'=>$user
         ]);
     }
 
@@ -99,7 +102,7 @@ class DocumentController extends Controller
 
         $document->update($request->all());
 
-        return redirect()->route('documents')->with('success', "le document a bien été modifié!");
+        return redirect()->route('folders.index')->with('success', "le document a bien été modifié!");
     }
     public function updateFile(Request $request, Document $document)
     {
@@ -122,14 +125,14 @@ class DocumentController extends Controller
 
         $document->update($input);
 
-        return redirect()->route('documents')->with('success', "le document a bien été modifié!");
+        return redirect()->route('folders.index')->with('success', "le document a bien été modifié!");
     }
 
 
     public function delete(Document $document)
     {
         $document->delete();
-        return redirect()->route('documents')->with('success', "le document a bien été supprimé!");
+        return redirect()->route('folders.index')->with('success', "le document a bien été supprimé!");
     }
 
     

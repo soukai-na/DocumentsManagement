@@ -25,7 +25,6 @@ use App\Http\Controllers\DocumentController;
 
 
 Route::get('/', [HomeController::class, 'welcome'])->middleware('admin')->name('welcome');
-
 Route::get('/compte',[UserController::class, 'compte'])->name('compte');
 Route::put('{user}/compteUpdate',[UserController::class,'compteUpdate'])->name('compte.updatePhoto');
 Route::post('/updatePassword',[UserController::class,'updatePassword'])->name('compte.updatePassword');
@@ -37,9 +36,10 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'doc'])->name('home');
 Route::get('/files',[DocumentController::class, 'files'])->name('files');
 
-Route::prefix('')->group(function(){
+Route::get('/folders/{folder:id}',[FolderController::class, 'tri'])->name('folders.tri');
+
+Route::prefix('')->middleware('admin')->group(function(){
     Route::get('/folders', [FolderController::class, 'index'])->name('folders.index');
-    Route::get('/folders/{folder:id}',[FolderController::class, 'tri'])->name('folders.tri');
     Route::get('/createfolder',[FolderController::class,'create'])->name('folders.create');
     Route::get('/{folder:id}/createsousfolder',[FolderController::class,'tricreate'])->name('folders.tricreate');
     Route::post('/folders/store',[FolderController::class,'store'])->name('folders.store');

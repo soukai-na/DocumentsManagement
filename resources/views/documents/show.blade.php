@@ -67,7 +67,7 @@
                             @endforeach
                             <h2 class="card-title">{{ $document->designation }}</h2>
                             <p class="card-description">
-                                <b style="color:#3774fc;">Crée par:</b> admin <br>
+                                <b style="color:#3774fc;">Crée par:</b> {{ $user }} <br>
                                 <b style="color:#3774fc;">Taille de fichier:</b>  {{ $fileSize }}<br>
                                 <b style="color:#3774fc;">Date de création:</b> {{ $document->dateFormatted() }}
                             </p>
@@ -119,7 +119,7 @@
 
                                 @case('txt')
                                     <center>
-                                        <object data="{{ url('documents/' . $document->file) }}" type="text/plain" width="700">
+                                        <object data="{{ url('documents/' . $document->file) }}" type="text/plain" width="100%" height="700">
                                             <a href="{{ url('documents/' . $document->file) }}">No Support?</a>
                                         </object>
                                     </center>
@@ -127,7 +127,9 @@
 
                                 @default
                                     <center>
-                                        <embed src="{{ url('documents/' . $document->file) }}" width="800" height="700">
+                                            <iframe
+                                                                                    src="{{ url('documents/' . $document->file) }}"
+                                                                                    width="100%" height="700px"></iframe>
                                     </center>
                             @endswitch
 

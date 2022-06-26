@@ -13,7 +13,7 @@ class Document extends Model
     use \Conner\Tagging\Taggable;
 
     public function dateFormatted(){
-        return date_format($this->created_at, 'Y-m-d ');
+        return date_format($this->created_at, 'd-m-Y ');
     }
     
     
