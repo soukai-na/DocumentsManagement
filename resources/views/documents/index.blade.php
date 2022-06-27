@@ -1,5 +1,6 @@
 @extends('base2')
-
+@section('styles')
+@endsection
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
@@ -19,16 +20,24 @@
                         {{ session('error') }}
                     </div>
                 @endif
+                <a class="mb-3 h1" href="">
+                    <button type="button" class="btn btn-social-icon-text btn-twitter">
+                        <i class="mdi mdi-share-variant"></i>Partager
+                    </button>
+                </a>
                 <div class="col-lg-12 grid-margin stretch-card">
+
                     <div class="card">
+
                         <div class="card-body">
-                            <h4 class="card-title"></h4>
+                            <h4 class="card-title float-left">
+
+                            </h4>
                             <div class="table-responsive">
-                                <table class="table" id="table" data-addrbar="true" data-pagination="true"
-                                    data-search="true" data-side-pagination="server"
-                                    class="table table-bordered table-hover">
+                                <table class="table">
                                     <thead style="color: #3e74fc;">
                                         <tr>
+                                            <th data-field="state" data-checkbox="true"></th>
                                             <th>Designation </th>
                                             <th>Type</th>
                                             <th>Taille</th>
@@ -39,7 +48,10 @@
                                     </thead>
                                     @foreach ($documents as $document)
                                         <tbody>
-                                            <tr>
+                                            <tr data-bs-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-custom-class="custom-tooltip" title="{{ $document->file }}">
+                                                <td class="bs-checkbox "><input data-index="0" name="btSelectItem"
+                                                        type="checkbox"></td>
                                                 <td onclick="document.location='{{ route('documents.show', $document->id) }}'"
                                                     style="cursor:pointer;">
                                                     {{ $document->designation }}
@@ -183,4 +195,11 @@
             <!-- content-wrapper ends -->
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 @endsection

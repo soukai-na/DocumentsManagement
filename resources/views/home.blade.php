@@ -121,7 +121,7 @@
             </div>
                 
             @else
-                <img src="images/oops.png" alt="oops" style="width: 100%; max-width: 1000px;"/>
+                <img src="images/oops.png" alt="oops" style="width: 100%; "/>
             @endif
         </div>
         <!-- content-wrapper ends -->

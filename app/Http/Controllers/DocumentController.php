@@ -134,6 +134,7 @@ class DocumentController extends Controller
         $document->delete();
         return redirect()->route('folders.index')->with('success', "le document a bien été supprimé!");
     }
+    
 
     
 }

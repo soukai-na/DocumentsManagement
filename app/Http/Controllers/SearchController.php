@@ -24,20 +24,22 @@ class SearchController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
         }
-        if($typeDoc){
+        else if($typeDoc){
             $documents = Document::query()
             ->where('type','like', "%{$typeDoc}%")
             ->orderBy('created_at', 'desc')
             ->get();
         }
 
-        if($tag){
+        else if($tag){
             $documents =Tagged::query()
             ->where('tag_slug', 'like', "%{$tag}%")
             ->get();
         }
         
-
+        else{
+            return view('search');
+        }
         $folders = Folder::all();
 
         $tags = Tag::query()

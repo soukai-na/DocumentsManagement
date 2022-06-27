@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars-o.css">
     <link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars.css">
+    @yield('styles')
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- End plugin css for this page -->
@@ -179,6 +180,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.20.2/extensions/addrbar/bootstrap-table-addrbar.min.js" integrity="sha512-YURXGofJXEjxPdLT6uAxDkblqsJfLkZNK8VnM/JLQrdsbvFQuXQP1PxFDGYZKz7VruIQhO7T75OL8ykrLbFTVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- base:js -->
     <script src="../vendors/base/vendor.bundle.base.js"></script>
+    @yield('scripts')
 
     <!-- endinject -->
     <!-- Plugin js for this page-->
