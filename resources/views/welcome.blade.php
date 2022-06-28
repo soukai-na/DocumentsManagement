@@ -10,7 +10,7 @@
             </div>
             <div class="row">
                     <div class="col-sm mb-4 stretch-card transparent">
-                        <div class="card card-tale" style="background: #2196f3;color: white; border-radius: 20px;">
+                        <div class="card card-tale" style="background: #C4DDFF;color: white; border-radius: 20px;">
                             <div class="card-body">
                                 <h5 class="mb-2"><i class="mdi  mdi-file-image"></i> Images</h5>
                                 <h3 class="mb-2">{{ $images }}</h3>
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div class="col-sm mb-4 stretch-card transparent">
-                        <div class="card card-dark-blue" style="background: #3f51b5;color: white; border-radius: 20px;">
+                        <div class="card card-dark-blue" style="background: #7FB5FF;color: white; border-radius: 20px;">
                             <div class="card-body">
                                 <h5 class="mb-2"><i class="mdi  mdi-file-video"></i> Vidéos</h5>
                                 <h3 class="mb-2">{{ $videos }}</h3>
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-sm mb-4  stretch-card transparent">
-                        <div class="card card-light-blue" style="background: #8bc34a;color: white; border-radius: 20px;">
+                        <div class="card card-light-blue" style="background: #001D6E;color: white; border-radius: 20px;">
                             <div class="card-body">
                                 <h5 class="mb-2"><i class="mdi  mdi-file-music"></i> Audios</h5>
                                 <h3 class="mb-2">{{ $audios }}</h3>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="col-sm mb-4 stretch-card transparent">
-                        <div class="card card-light-danger" style="background: #009688;color: white; border-radius: 20px;">
+                        <div class="card card-light-danger" style="background: #FEE2C5;color: white; border-radius: 20px;">
                             <div class="card-body">
                                 <h5 class="mb-2"><i class="mdi  mdi-file-pdf"></i>Fichier PDF</h5>
                                 <h3 class="mb-2">{{ $pdf }}</h3>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="col-sm mb-4 stretch-card transparent">
-                        <div class="card card-tale" style="background: #965bff;color: white; border-radius: 20px;">
+                        <div class="card card-tale" style="background: #C4DDFF;color: white; border-radius: 20px;">
                             <div class="card-body">
                                 <h5 class="mb-2"><i class="mdi mdi-file-word"></i>Fichier Word</h5>
                                 <h3 class="mb-2">{{ $word }}</h3>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="col-sm mb-4 stretch-card transparent">
-                        <div class="card card-tale" style="background: #e95889;color: white; border-radius: 20px;">
+                        <div class="card card-tale" style="background: #7FB5FF;color: white; border-radius: 20px;">
                             <div class="card-body">
                                 <h5 class="mb-2"><i class="mdi mdi-file-excel"></i>Fichier Excel</h5>
                                 <h3 class="mb-2">{{ $excel }}</h3>
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="col-sm mb-4 stretch-card transparent">
-                        <div class="card card-tale" style="background: #607d8b;color: white; border-radius: 20px;">
+                        <div class="card card-tale" style="background: #001D6E;color: white; border-radius: 20px;">
                             <div class="card-body">
                                 <h5 class="mb-2"><i class="mdi  mdi-file-document"></i> Fichier texte</h5>
                                 <h3 class="mb-2">{{ $txt }}</h3>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="col-sm mb-4 stretch-card transparent">
-                        <div class="card card-tale" style="background: #a79ad6;color: white; border-radius: 20px;">
+                        <div class="card card-tale" style="background: #FEE2C5;color: white; border-radius: 20px;">
                             <div class="card-body">
                                 <h5 class="mb-2"><i class="mdi   mdi-package-variant-closed"></i> Total</h5>
                                 <h3 class="mb-2">{{ $total }}</h3>

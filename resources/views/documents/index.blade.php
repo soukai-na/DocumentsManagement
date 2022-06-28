@@ -20,21 +20,25 @@
                         {{ session('error') }}
                     </div>
                 @endif
-                <a class="mb-3 h1" href="">
+                <a class="mb-3 h1 " href="">
                     <button type="button" class="btn btn-social-icon-text btn-twitter">
                         <i class="mdi mdi-share-variant"></i>Partager
                     </button>
                 </a>
+                <div class="form-group col-sm-3  d-block">
+                    <input type="text" id="myInput" onkeyup="myFunction()" class="form-control float-right"
+                        placeholder="Rechercher...">
+                </div>
                 <div class="col-lg-12 grid-margin stretch-card">
-
+                    
                     <div class="card">
 
                         <div class="card-body">
-                            <h4 class="card-title float-left">
-
+                            <h4 class="card-title">
+                                
                             </h4>
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table" id="myTable">
                                     <thead style="color: #3e74fc;">
                                         <tr>
                                             <th data-field="state" data-checkbox="true"></th>
@@ -42,7 +46,7 @@
                                             <th>Type</th>
                                             <th>Taille</th>
                                             <th>QR Code</th>
-                                            <th>Date de création</th>
+                                            <th>Emplacement</th>
                                             <th>Aperçu</th>
                                         </tr>
                                     </thead>
@@ -72,7 +76,7 @@
                                                 </td>
                                                 <td onclick="document.location='{{ route('documents.show', $document->id) }}'"
                                                     style="cursor:pointer;">
-                                                    {{ $document->dateFormatted() }}
+                                                    {{ $document->folder->designation }}
                                                 </td>
                                                 <td><button type="button" class="btn btn-primary btn-rounded btn-icon"
                                                         data-toggle="modal" data-target="#show{{ $document->id }}">
@@ -202,4 +206,7 @@
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
+@endsection
+@section('scripts')
+   
 @endsection

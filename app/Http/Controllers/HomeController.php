@@ -59,7 +59,7 @@ class HomeController extends Controller
     
     public function doc()
     {
-        $id=Auth::user()->id;
+        $id=Auth::user()->folder_id;
         $folders = DB::table('folders')->where('id', $id)->get();
         
         $folder_id=$id;

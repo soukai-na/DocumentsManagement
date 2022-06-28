@@ -24,7 +24,7 @@ class DocumentController extends Controller
 
     public function index()
     {
-        $documents = Document::paginate(5);
+        $documents = Document::paginate(100);
         return view(
             'documents.index',
             [

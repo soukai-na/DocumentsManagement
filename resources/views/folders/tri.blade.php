@@ -13,6 +13,12 @@
             </nav>
             <div class="row">
                 <div class="row d-block mb-3">
+                    <a href="">
+                        <button type="button" class="btn btn-inverse-success btn-fw">
+                            <i class="mdi mdi-upload"></i>
+                            Scanner un fichier
+                        </button>
+                    </a>
                     <a href="{{ route('documents.create', $f_id) }}">
                         <button type="button" class="btn btn-inverse-primary btn-fw">
                             <i class="mdi mdi-upload"></i>
@@ -20,12 +26,12 @@
                         </button>
                     </a>
                     @if (Auth::user()->role == 'ADMIN')
-                    <a href="{{ route('folders.tricreate', $f_id) }} ">
-                        <button type="button" class="btn btn-inverse-info btn-fw">
-                            <i class="mdi mdi-plus"></i>
-                            Ajouter un dossier
-                        </button>
-                    </a>
+                        <a href="{{ route('folders.tricreate', $f_id) }} ">
+                            <button type="button" class="btn btn-inverse-info btn-fw">
+                                <i class="mdi mdi-plus"></i>
+                                Ajouter un dossier
+                            </button>
+                        </a>
                     @endif
                 </div>
 
@@ -37,25 +43,18 @@
                                 <h2>{{ $desg }}
                                 </h2>
                             </div>
-                            <h4 class="card-title"></h4>
+                            <h4 class="card-title">
+                                <div class="form-group">
+                                    <input type="text" id="myInput" onkeyup="myFunction()" class="form-control"
+                                        placeholder="Rechercher">
+                                </div>
+                            </h4>
                             <p class="card-description">
 
                             </p>
                             <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                label
-                                            </th>
-                                            <th>
-                                                Designation
-                                            </th>
-                                            <th>
-                                                Actions
-                                            </th>
-                                        </tr>
-                                    </thead>
+                                <table class="table table-striped" id="myTable">
+
                                     <tbody>
                                         @foreach ($folders as $folder)
                                             <tr>
@@ -158,6 +157,8 @@
                                                 <td>
                                                     {{ $document->designation }}
                                                 </td>
+                                                <td>{{ $document->type }}</td>
+                                                <td>{!! DNS2D::getBarcodeHTML($document->file, 'QRCODE', 3, 3) !!}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-primary btn-rounded btn-icon"
                                                         data-toggle="modal" data-target="#show{{ $document->id }}">
@@ -166,7 +167,7 @@
                                                     <div class="modal fade" id="show{{ $document->id }}"
                                                         tabindex="-1" role="dialog"
                                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-dialog modal-dialog-scrollable" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title" id="exampleModalLongTitle">
@@ -177,16 +178,87 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    Ici!
+                                                                    @switch($document->type)
+                                                                        @case('image')
+                                                                            <center>
+                                                                                <img src="{{ url('documents/' . $document->file) }}"
+                                                                                    style="width: auto !important; height: auto !important; border-radius: 0%; max-width: 720px"
+                                                                                    alt="image" />
+                                                                            </center>
+                                                                        @break
+
+                                                                        @case('video')
+                                                                            <center>
+                                                                                <video controls width="100%" autoplay>
+
+                                                                                    <source
+                                                                                        src="{{ url('documents/' . $document->file) }}">
+
+                                                                                </video>
+                                                                            </center>
+                                                                        @break
+
+                                                                        @case('audio')
+                                                                            <center>
+                                                                                <figure>
+                                                                                    <audio controls
+                                                                                        src="{{ url('documents/' . $document->file) }}">
+                                                                                    </audio>
+                                                                                </figure>
+                                                                            </center>
+                                                                        @break
+
+                                                                        @case('excel')
+                                                                            <center>
+                                                                                <a href="{{ url('documents/' . $document->file) }}"
+                                                                                    target="_blank">Ouvrir le fichier
+                                                                                    excel</a>
+                                                                            </center>
+                                                                        @break
+
+                                                                        @case('word')
+                                                                            <center>
+                                                                                <a href="{{ url('documents/' . $document->file) }}"
+                                                                                    target="_blank">Ouvrir le fichier
+                                                                                    word</a>
+                                                                                <iframe
+                                                                                    src="https://view.officeapps.live.com/op/view.aspx?src={{ url('documents/' . $document->file) }}"
+                                                                                    frameborder="0"></iframe>
+                                                                            </center>
+                                                                        @break
+
+                                                                        @case('txt')
+                                                                            <center>
+                                                                                <object
+                                                                                    data="{{ url('documents/' . $document->file) }}"
+                                                                                    type="text/plain" width="100%"
+                                                                                    height="700px">
+                                                                                    <a
+                                                                                        href="{{ url('documents/' . $document->file) }}">No
+                                                                                        Support?</a>
+                                                                                </object>
+                                                                            </center>
+                                                                        @break
+
+                                                                        @default
+                                                                            <center>
+                                                                                <iframe
+                                                                                    src="{{ url('documents/' . $document->file) }}"
+                                                                                    width="100%" height="700px"></iframe>
+                                                                            </center>
+                                                                    @endswitch
                                                                 </div>
                                                                 <div class="modal-footer">
+                                                                    <a href="{{ route('documents.show', $document->id) }}"
+                                                                        type="button" class="btn btn-primary">Afficher
+                                                                        plus</a>
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Close</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <a href="">
+                                                    <a href="{{ route('documents.edit', $document->id) }}">
                                                         <button type="button"
                                                             class="btn btn-success btn-rounded btn-icon">
                                                             <i class="mdi mdi-pencil"></i>
@@ -241,4 +313,7 @@
         </div>
 
     </div>
+@endsection
+@section('scripts')
+
 @endsection
