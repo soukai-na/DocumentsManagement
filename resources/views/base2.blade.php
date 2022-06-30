@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars.css">
     @yield('styles')
 
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
@@ -177,7 +178,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.20.2/extensions/addrbar/bootstrap-table-addrbar.min.js" integrity="sha512-YURXGofJXEjxPdLT6uAxDkblqsJfLkZNK8VnM/JLQrdsbvFQuXQP1PxFDGYZKz7VruIQhO7T75OL8ykrLbFTVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- base:js -->
     <script src="../vendors/base/vendor.bundle.base.js"></script>
     @yield('scripts')
@@ -209,6 +209,40 @@
     <script src="../js/off-canvas.js"></script>
     <script src="../js/hoverable-collapse.js"></script>
     <script src="../js/template.js"></script>
+    
+    <script type="text/javascript">
+        Dynamsoft.DWT.RegisterEvent('OnWebTwainReady', Dynamsoft_OnReady);
+        // Register OnWebTwainReady event. This event fires as soon as Dynamic Web TWAIN is initialized and ready to be used
+
+        var DWObject;
+
+        function Dynamsoft_OnReady() {
+            DWObject = Dynamsoft.DWT.GetWebTwain('dwtcontrolContainer');
+            if (DWObject) {
+                var count = DWObject.SourceCount;
+                for (var i = 0; i < count; i++)
+                    document.getElementById("source").options.add(new Option(DWObject.GetSourceNameItems(i), i));
+                // Get Data Source names from Data Source Manager and put them in a drop-down box
+            }
+        }
+        function AcquireImage() {
+            if (DWObject) {
+				var OnAcquireImageSuccess = function () {
+					DWObject.CloseSource();
+				};
+				
+				var OnAcquireImageFailure = function (ec, es) {
+					DWObject.CloseSource();
+					alert(es);
+				};					
+
+                DWObject.SelectSourceByIndex(document.getElementById("source").selectedIndex); //Use method SelectSourceByIndex to avoid the 'Select Source' dialog
+                DWObject.OpenSource();
+                DWObject.IfDisableSourceAfterAcquire = true;	// Scanner source will be disabled/closed automatically after the scan.
+                DWObject.AcquireImage(OnAcquireImageSuccess, OnAcquireImageFailure);
+            }
+        }
+    </script>
     <!-- endinject -->
     <!-- plugin js for this page -->
     <script src="../vendors/chart.js/Chart.min.js"></script>

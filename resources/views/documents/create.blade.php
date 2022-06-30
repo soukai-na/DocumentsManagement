@@ -12,8 +12,9 @@
                         <p class="card-description">
                           
                         </p>
-                        <form class="forms-sample" method="POST" action="{{ route('documents.store') }}" enctype="multipart/form-data">
+                        <form class="forms-sample" method="POST" action="{{ route('documents.store',$folder->id) }}" enctype="multipart/form-data">
                             @csrf
+                            @dump($folder->id)
                             
                           <div class="form-group">
                             <label for="designation">Designation</label>

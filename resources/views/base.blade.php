@@ -181,7 +181,6 @@
     <script src="js/off-canvas.js"></script>
     <script src="js/hoverable-collapse.js"></script>
     <script src="js/template.js"></script>
-    <script src="js/bootstrap-table-addrbar.js"></script>
     <!-- endinject -->
     <!-- plugin js for this page -->
     <script src="vendors/chart.js/Chart.min.js"></script>

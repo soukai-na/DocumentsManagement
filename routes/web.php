@@ -64,7 +64,8 @@ Route::prefix('')->group(function(){
     Route::get('/editdocument/{document}',[DocumentController::class, 'edit'])->name('documents.edit');
     Route::get('/document/{document}',[DocumentController::class, 'show'])->name('documents.show');
     Route::get('/{folder:id}/createdocument',[DocumentController::class, 'create'])->name('documents.create');
-    Route::post('/document/store',[DocumentController::class,'store'])->name('documents.store');
+    Route::get('/{folder:id}/scandocument',[DocumentController::class, 'scan'])->name('documents.scan');
+    Route::post('/document/{folder:id}/store',[DocumentController::class,'store'])->name('documents.store');
     Route::put('/document/{document}/update',[DocumentController::class,'update'])->name('documents.update');
     Route::put('/document/{document}/updateFile',[DocumentController::class,'updateFile'])->name('documents.updateFile');
     Route::delete('/document/{document:id}/delete',[DocumentController::class,'delete'])->name('documents.delete');

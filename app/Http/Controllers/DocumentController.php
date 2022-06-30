@@ -41,6 +41,14 @@ class DocumentController extends Controller
             'users' => User::all(),
         ]);
     }
+    public function scan(Folder $folder)
+    {
+        return view('documents.scan', [
+            'folders' => Folder::all(),
+            'folder' => $folder,
+            'users' => User::all(),
+        ]);
+    }
 
     public function show(Document $document)
     { 
@@ -75,14 +83,14 @@ class DocumentController extends Controller
         return Response::download($file, $dl->file, $headers);
     }
 
-    public function store(DocumentRequest $request)
+    public function store(DocumentRequest $request,$id)
     {
         
         $validated = $request->validated();
 
         $this->documentManager->build(new Document(), $request);
 
-        return redirect()->route('folders.index')->with('success', "le document a bien été sauvegardé!");
+        return redirect()->route('folders.tri',$id)->with('success', "le document a bien été sauvegardé!");
     }
 
 

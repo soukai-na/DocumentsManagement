@@ -13,7 +13,7 @@
             </nav>
             <div class="row">
                 <div class="row d-block mb-3">
-                    <a href="">
+                    <a href="{{ route('documents.scan', $f_id) }}">
                         <button type="button" class="btn btn-inverse-success btn-fw">
                             <i class="mdi mdi-upload"></i>
                             Scanner un fichier
