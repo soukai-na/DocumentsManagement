@@ -6,6 +6,7 @@ use App\Models\Folder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class HomeController extends Controller
 {
@@ -29,6 +30,16 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function tailleImages()
+    {
+        $sizeImages = DB::table('documents')->where('type', 'image')->value('file'); 
+        foreach($sizeImages as $sizeImage)
+        {
+            $fileSize = File::size(public_path('documents/'.$sizeImage.''));
+        }
+        return $fileSize;
+    }
+
 
     public function welcome()
     {
@@ -41,6 +52,21 @@ class HomeController extends Controller
         $excel = DB::table('documents')->where('type', 'excel')->count(); 
         $txt = DB::table('documents')->where('type', 'txt')->count();
         $total = DB::table('documents')->count();
+
+        $sizeImages = DB::table('documents')->where('type', 'image')->get(); 
+        foreach($sizeImages as $sizeImage){
+            $fileSize = File::size(public_path('documents/'.$sizeImage->file.''));  
+        }
+        $test=collect($fileSize);
+        function formatBytes($fileSize, $precision = 2)
+        {
+          $base = log($fileSize, 1024);
+          $suffixes = array('', 'K', 'M', 'G', 'T');   
+          
+          return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
+        }
+           
+            
         return view('welcome',
         [
             'folders' => $folders,
@@ -52,6 +78,9 @@ class HomeController extends Controller
             'excel' => $excel,
             'txt' => $txt,
             'total' => $total,
+            'sizeImages'=>$sizeImages,
+            'fileSize'=>formatBytes($fileSize),
+            'test'=>$test,
         ]);
     }
    

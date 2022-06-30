@@ -1,5 +1,6 @@
 @extends('base2')
 @section('styles')
+
 @endsection
 @section('content')
     <div class="main-panel">
@@ -54,6 +55,7 @@
                                         <tbody>
                                             <tr data-bs-toggle="tooltip" data-bs-placement="top"
                                                 data-bs-custom-class="custom-tooltip" title="{{ $document->file }}">
+                                                
                                                 <td class="bs-checkbox "><input data-index="0" name="btSelectItem"
                                                         type="checkbox"></td>
                                                 <td onclick="document.location='{{ route('documents.show', $document->id) }}'"

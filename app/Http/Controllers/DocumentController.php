@@ -82,6 +82,7 @@ class DocumentController extends Controller
 
         return Response::download($file, $dl->file, $headers);
     }
+   
 
     public function store(DocumentRequest $request,$id)
     {

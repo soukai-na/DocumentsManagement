@@ -1,7 +1,10 @@
 @extends('base2')
 @section('styles')
-    <script type="text/javascript" src="../Resources/dynamsoft.webtwain.initiate.js"></script>
-    <script type="text/javascript" src="../Resources/dynamsoft.webtwain.config.js"></script>
+<script type="text/javascript" src="../../Resources/dynamsoft.webtwain.initiate.js"></script>
+<script type="text/javascript" src="../../Resources/dynamsoft.webtwain.config.js"></script>
+<link href="../../Resources/src/dynamsoft.webtwain.css" rel="stylesheet">
+<link href="../../Resources/src/dynamsoft.viewer.css" rel="stylesheet">
+
 @endsection
 @section('content')
     <div class="main-panel">
@@ -38,14 +41,13 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
+                                </div><br>
                                 <div class="form-group">
-                                    <strong>Document:</strong>
-                                    <select size="1" id="source"
-                                        style="position: relative; width: 220px;"></select>
-                                    <input type="button" value="Scan" onclick="AcquireImage();" />
-                                    <!-- dwtcontrolContainer is the default div id for Dynamic Web TWAIN control.
-            If you need to rename the id, you should also change the id in the dynamsoft.webtwain.config.js accordingly. -->
+                                    <label for="document">Document</label>
+                                    <select size="1" id="source" class="form-control"></select><br>
+                                    <input type="button" class="btn btn-outline-info btn-fw " value="Scan"
+                                        onclick="AcquireImage();" />
+
                                     <div id="dwtcontrolContainer" name="file"></div>
                                     @error('file')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>

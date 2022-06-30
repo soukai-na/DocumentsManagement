@@ -137,14 +137,6 @@
                                 <span class="menu-title">Dashboard</span>
                             </a>
                         </li>
-                        @if (Auth::user()->status == 'ACTIVE')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('documents') }}">
-                                    <i class="icon-paper-stack menu-icon"></i>
-                                    <span class="menu-title">Documents</span>
-                                </a>
-                            </li>
-                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('compte') }}">
                                 <i class="icon-head menu-icon"></i>
