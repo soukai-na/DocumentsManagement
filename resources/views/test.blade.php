@@ -5,47 +5,64 @@
     <title>Test Scan</title>
     <script type="text/javascript" src="Resources/dynamsoft.webtwain.initiate.js"></script>
     <script type="text/javascript" src="Resources/dynamsoft.webtwain.config.js"></script>
+    
 </head>
 
 <body>
-    <select size="1" id="source" style="position: relative; width: 220px;"></select>
-    <input type="button" value="Scan" onclick="AcquireImage();" />
+    
+    <input type="button" value="Scan Image" onclick="acquireImage();" />
+    <input id="btnUpload" type="button" value="Upload Image" onclick="upload()">
 
     <!-- dwtcontrolContainer is the default div id for Dynamic Web TWAIN control.
     If you need to rename the id, you should also change the id in the dynamsoft.webtwain.config.js accordingly. -->
     <div id="dwtcontrolContainer"></div>
 
     <script type="text/javascript">
-        Dynamsoft.DWT.RegisterEvent('OnWebTwainReady', Dynamsoft_OnReady);
-        // Register OnWebTwainReady event. This event fires as soon as Dynamic Web TWAIN is initialized and ready to be used
-
         var DWObject;
-
+        Dynamsoft.DWT.Containers = [{
+            ContainerId: 'dwtcontrolContainer',
+            Width: '480px',
+            Height: '640px'
+        }];
+        Dynamsoft.DWT.RegisterEvent('OnWebTwainReady', Dynamsoft_OnReady);
+        Dynamsoft.DWT.ProductKey = "t00996QAAABka9dMtCFIeVd8L7lVynzSThlm8edt5d5HMQz4KO6jnypgxhPSDMJqTO0DIF5mVEt5rloO1POlsMAY9bXUzigeBfSu+0Dg1R9QIeudo9jDWjacwRehGi4ImeADaXi/Q";
+        Dynamsoft.DWT.Load();
         function Dynamsoft_OnReady() {
             DWObject = Dynamsoft.DWT.GetWebTwain('dwtcontrolContainer');
+            var token = document.querySelector("meta[name='_token']").getAttribute("content");
+            DWObject.SetHTTPFormField('_token', token);
+        }
+
+        
+
+        function acquireImage() {
             if (DWObject) {
-                var count = DWObject.SourceCount;
-                for (var i = 0; i < count; i++)
-                    document.getElementById("source").options.add(new Option(DWObject.GetSourceNameItems(i), i));
-                // Get Data Source names from Data Source Manager and put them in a drop-down box
+                DWObject.IfShowUI = false;
+                DWObject.IfDisableSourceAfterAcquire = true; 
+                DWObject.SelectSource(); 
+                DWObject.OpenSource
+                DWObject.AcquireImage();
             }
         }
-        function AcquireImage() {
-            if (DWObject) {
-				var OnAcquireImageSuccess = function () {
-					DWObject.CloseSource();
-				};
-				
-				var OnAcquireImageFailure = function (ec, es) {
-					DWObject.CloseSource();
-					alert(es);
-				};					
 
-                DWObject.SelectSourceByIndex(document.getElementById("source").selectedIndex); //Use method SelectSourceByIndex to avoid the 'Select Source' dialog
-                DWObject.OpenSource();
-                DWObject.IfDisableSourceAfterAcquire = true;	// Scanner source will be disabled/closed automatically after the scan.
-                DWObject.AcquireImage(OnAcquireImageSuccess, OnAcquireImageFailure);
-            }
+        function upload() {
+            var OnSuccess = function(httpResponse) {
+                alert("Succesfully uploaded");
+            };
+
+            var OnFailure = function(errorCode, errorString, httpResponse) {
+                alert(httpResponse);
+            };
+
+            var date = new Date();
+            DWObject.HTTPUploadThroughPostEx(
+                "{{ route('documents.store', 8) }}",
+                DWObject.CurrentImageIndexInBuffer,
+                '',
+                date.getTime() + ".jpg",
+                1, // JPEG
+                OnSuccess, OnFailure
+            );
         }
     </script>
 </body>

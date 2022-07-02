@@ -108,16 +108,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control" name="typeFolder" id="exampleSelectGender">
-                                        <option selected disabled>Type de dossier</option>
-                                        <option value="service">Service</option>
-                                        <option value="sousservice">Sous Service</option>
-                                        <option value="theme">Thème</option>
-                                        <option value="soustheme">Sous Thème</option>
-                                        <option value="dossier">Dossier</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
                                     <select class="form-control" name="typeDoc" id="exampleSelectGender">
                                         <option selected disabled>Type de fichier</option>
                                         <option value="image">Image</option>
@@ -127,14 +117,6 @@
                                         <option value="excel">Excel</option>
                                         <option value="txt">Fichier texte</option>
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input type="date" name="date" class="form-control"
-                                            placeholder="Par date de création" aria-label="Recipient's username">
-                                        <div class="input-group-append">
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="form-group justify-content-center">
                                     <button type="submit" class="btn btn-primary mb-2 float-right">Rechercher</button>

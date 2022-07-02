@@ -62,6 +62,15 @@ class FolderController extends Controller
         return redirect()->route('folders.index')->with('success',"le dossier a bien été sauvegardé!");
     }
 
+    public function triStore(FolderRequest $request,$id)
+    {
+        $validated=$request->validated();
+
+        $this->folderManager->build(new Folder(),$request);  
+
+        return redirect()->route('folders.tri',$id)->with('success',"le dossier a bien été sauvegardé!");
+    }
+
     /**
      * Display the specified resource.
      *

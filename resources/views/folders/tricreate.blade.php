@@ -12,7 +12,7 @@
                 <p class="card-description">
                   
                 </p>
-                <form class="forms-sample"  method="POST" action="{{ route('folders.store') }}">
+                <form class="forms-sample"  method="POST" action="{{ route('folders.tristore',$folder->id) }}">
                     @csrf
                   <div class="form-group">
                     <label for="designation">Designation</label>

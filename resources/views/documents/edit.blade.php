@@ -9,6 +9,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Modifier le document</h4>
                             <p class="card-description">
+                                @dump($document->folder_id)
                             <form class="forms-sample" method="POST"
                                 action="{{ route('documents.updateFile', $document->id) }}" enctype="multipart/form-data">
                                 @method('PUT')

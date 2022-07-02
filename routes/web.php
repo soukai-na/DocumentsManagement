@@ -45,6 +45,7 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::get('/createfolder',[FolderController::class,'create'])->name('folders.create');
     Route::get('/{folder:id}/createsousfolder',[FolderController::class,'tricreate'])->name('folders.tricreate');
     Route::post('/folders/store',[FolderController::class,'store'])->name('folders.store');
+    Route::post('/folders/{folder:id}/store',[FolderController::class,'triStore'])->name('folders.tristore');
     Route::get('/folder',[FolderController::class,'show'])->name('folders.show');
     Route::delete('/folders/{folder:id}/delete',[FolderController::class,'delete'])->name('folders.delete');
     Route::get('/folders/{folder}/edit',[FolderController::class,'edit'])->name('folders.edit');

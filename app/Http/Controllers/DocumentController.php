@@ -43,7 +43,7 @@ class DocumentController extends Controller
     }
     public function scan(Folder $folder)
     {
-        return view('documents.scan', [
+        return view('scan', [
             'folders' => Folder::all(),
             'folder' => $folder,
             'users' => User::all(),
@@ -111,7 +111,7 @@ class DocumentController extends Controller
 
         $document->update($request->all());
 
-        return redirect()->route('folders.index')->with('success', "le document a bien été modifié!");
+        return redirect()->route('folders.tri',$document->folder_id)->with('success', "le document a bien été modifié!");
     }
     public function updateFile(Request $request, Document $document)
     {
@@ -134,14 +134,14 @@ class DocumentController extends Controller
 
         $document->update($input);
 
-        return redirect()->route('folders.index')->with('success', "le document a bien été modifié!");
+        return redirect()->route('folders.tri',$document->folder_id)->with('success', "le document a bien été modifié!");
     }
 
 
     public function delete(Document $document)
     {
         $document->delete();
-        return redirect()->route('folders.index')->with('success', "le document a bien été supprimé!");
+        return redirect()->route('folders.tri',$document->folder_id)->with('success', "le document a bien été supprimé!");
     }
     
 

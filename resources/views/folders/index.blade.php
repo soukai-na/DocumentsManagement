@@ -90,7 +90,8 @@
                                                                             <li><strong>Arabe Designation:</strong>
                                                                                 {{ $folder->designationar }}</li>
                                                                             <li><strong>Crée le:</strong>
-                                                                                {{ $folder->dateFormatted() }}</li>
+                                                                                {{ $folder->dateFormatted() }}
+                                                                            </li>
                                                                         </ul>
                                                                     </div>
                                                                     <div class="modal-footer">
