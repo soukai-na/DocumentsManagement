@@ -1,10 +1,8 @@
 @extends('base2')
 @section('styles')
-<script type="text/javascript" src="../../Resources/dynamsoft.webtwain.initiate.js"></script>
-<script type="text/javascript" src="../../Resources/dynamsoft.webtwain.config.js"></script>
-<link href="../../Resources/src/dynamsoft.webtwain.css" rel="stylesheet">
-<link href="../../Resources/src/dynamsoft.viewer.css" rel="stylesheet">
-
+    <script type="text/javascript" src="../Resources/dynamsoft.webtwain.initiate.js"></script>
+    <script type="text/javascript" src="../Resources/dynamsoft.webtwain.config.js"></script>
+    <meta name="_token" content="" />
 @endsection
 @section('content')
     <div class="main-panel">
@@ -44,11 +42,11 @@
                                 </div><br>
                                 <div class="form-group">
                                     <label for="document">Document</label>
-                                    <select size="1" id="source" class="form-control"></select><br>
-                                    <input type="button" class="btn btn-outline-info btn-fw " value="Scan"
-                                        onclick="AcquireImage();" />
+                                    <br>
+                                    <input type="button" class="btn btn-outline-info btn-fw " value="Scan document"
+                                        onclick="acquireImage();" />
 
-                                    <div id="dwtcontrolContainer" name="file"></div>
+                                    <div id="dwtcontrolContainer"></div>
                                     @error('file')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
@@ -89,7 +87,8 @@
                                         value="{{ Auth::user()->id }}" />
 
                                 </div>
-                                <button type="submit" class="btn btn-primary mr-2">Ajouter le document</button>
+                                <button type="submit" class="btn btn-primary mr-2" id="btnUpload"
+                                    onclick="upload()">Ajouter le document</button>
 
                             </form><a href=" {{ Route('documents') }}">
                                 <br>
