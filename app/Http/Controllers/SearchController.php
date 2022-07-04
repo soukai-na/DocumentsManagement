@@ -10,6 +10,7 @@ use Conner\Tagging\Model\Tagged;
 
 class SearchController extends Controller
 {
+    //Formulaire de recherche
     public function search(Request $request)
     {
         $key = trim($request->get('doc'));

@@ -25,22 +25,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    //la page d'un user
     public function index()
     {
         return view('home');
     }
 
-    public function tailleImages()
-    {
-        $sizeImages = DB::table('documents')->where('type', 'image')->value('file'); 
-        foreach($sizeImages as $sizeImage)
-        {
-            $fileSize = File::size(public_path('documents/'.$sizeImage.''));
-        }
-        return $fileSize;
-    }
+    
 
 
+    //la page d'admin
     public function welcome()
     {
         $folders = Folder::all(); 

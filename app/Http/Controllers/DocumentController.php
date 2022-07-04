@@ -22,6 +22,7 @@ class DocumentController extends Controller
         $this->documentManager = $documentManager;
     }
 
+    //afficher la liste des documents
     public function index()
     {
         $documents = Document::paginate(100);
@@ -33,6 +34,7 @@ class DocumentController extends Controller
         );
     }
 
+    //afficher la page de création d'un document
     public function create(Folder $folder)
     {
         return view('documents.create', [
@@ -41,6 +43,7 @@ class DocumentController extends Controller
             'users' => User::all(),
         ]);
     }
+    //afficher la page qui contient le scanner
     public function scan(Folder $folder)
     {
         return view('scan', [
@@ -50,6 +53,7 @@ class DocumentController extends Controller
         ]);
     }
 
+    //l'affichage d'un document
     public function show(Document $document)
     { 
       $fileSize = File::size(public_path('documents/'.$document->file.''));
@@ -69,10 +73,10 @@ class DocumentController extends Controller
         ]);
     }
 
+    //pour télécharger un document
     public function download($id)
     {
         $dl = Document::find($id);
-        // return Storage::download($dl->destination, $dl->designation);
 
         $file = public_path() . "/documents/" . $dl->file;
 
@@ -84,6 +88,7 @@ class DocumentController extends Controller
     }
    
 
+    //pour sauvegarder les données de création d'un document
     public function store(DocumentRequest $request,$id)
     {
         
@@ -95,6 +100,7 @@ class DocumentController extends Controller
     }
 
 
+    //afficher la page de modification
     public function edit(Document $document)
     {
         return view('documents.edit', [
@@ -102,6 +108,7 @@ class DocumentController extends Controller
         ]);
     }
 
+    //sauvegarder les données modifiées(seulement les informations d'un document)
     public function update(Request $request, Document $document)
     {
         $request->validate([
@@ -113,6 +120,8 @@ class DocumentController extends Controller
 
         return redirect()->route('folders.tri',$document->folder_id)->with('success', "le document a bien été modifié!");
     }
+
+    //pour le changemet d'un document et son type
     public function updateFile(Request $request, Document $document)
     {
         $request->validate([
@@ -138,6 +147,7 @@ class DocumentController extends Controller
     }
 
 
+    //la suppression d'un document
     public function delete(Document $document)
     {
         $document->delete();

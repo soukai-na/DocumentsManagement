@@ -42,6 +42,7 @@ class UserSeeder extends Seeder
             'role'=>User::USER_ROLE ,
             'status' => User::INACTIVE_STATUS,
             'folder_id'=>2,
+            'groupe_id'=>2
         ]);
     }
 }

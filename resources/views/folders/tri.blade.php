@@ -1,4 +1,27 @@
 @extends('base2')
+@section('styles')
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <style>
+        .photo {
+            width: 300px;
+            text-align: center;
+        }
+
+        .photo .ui-widget-header {
+            margin: 1em 0;
+        }
+
+        .map {
+            width: 350px;
+            height: 350px;
+        }
+
+        .ui-tooltip {
+            max-width: 350px;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
@@ -155,7 +178,7 @@
                                                         style="border-radius: 0%; cursor: pointer;" alt="image" />
                                                 </td>
                                                 <td>
-                                                    {{ $document->designation }}
+                                                    <a href="" title="{{ $document->file }}" data-geo="{{ $document->file }}"> {{ $document->designation }} </a>
                                                 </td>
                                                 <td>{{ $document->type }}</td>
                                                 <td>{!! DNS2D::getBarcodeHTML($document->file, 'QRCODE', 3, 3) !!}</td>
@@ -314,6 +337,31 @@
 
     </div>
 @endsection
-@section('scripts')
 
+@section('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+          $( document ).tooltip({
+            items: "img, [data-geo], [title]",
+            content: function() {
+              var element = $( this );
+              if ( element.is( "[data-geo]" ) ) {
+                var text = element.text();
+                var datageo=element.attr("data-geo");
+                return "<embed alt='" + text +
+                  "' src='../documents/"+datageo+"'>";
+              }
+              if ( element.is( "[title]" ) ) {
+                return element.attr( "title" );
+              }
+              if ( element.is( "img" ) ) {
+                return element.attr( "alt" );
+              }
+            }
+          });
+        } );
+        </script>
 @endsection
+

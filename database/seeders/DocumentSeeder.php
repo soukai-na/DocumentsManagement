@@ -20,7 +20,7 @@ class DocumentSeeder extends Seeder
             'description' => 'وثيقة1',
             'file'=>'doc1.pdf',
             'type' => 'pdf',
-            'folder_id'=>1,
+            'folder_id'=>8,
             'user_id'=>1
         ]);
         Document::create([
@@ -29,7 +29,7 @@ class DocumentSeeder extends Seeder
             'file'=>'doc2.png',
             'type' => 'image',
             'folder_id'=>8,
-            'user_id'=>1
+            'user_id'=>2
         ]);
     }
 }

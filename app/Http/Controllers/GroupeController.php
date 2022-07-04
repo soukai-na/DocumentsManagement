@@ -22,6 +22,7 @@ class GroupeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //la liste des groupes
     public function index()
     {
         $groupes = Groupe::paginate(5);
@@ -35,19 +36,13 @@ class GroupeController extends Controller
         );
     }
 
-    public function getGroupes(){
-        $user = User::find(2);
-        $groupes = $user->groupes; 
-        foreach($groupes as $groupe) {
-            return $groupe;
-          }
-
-    }
+    
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+    // la page de création d'un groupe
     public function create()
     {
         return view('groupes.create',[
@@ -61,6 +56,8 @@ class GroupeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     //sauvegarder un groupe
     public function store(GroupeRequest $request)
     {
         $validated=$request->validated();
@@ -89,6 +86,8 @@ class GroupeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //la page de modification d'un groupe
     public function edit(Groupe $groupe)
     {
         return view('groupes.edit',[
@@ -103,6 +102,7 @@ class GroupeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //sauvegarder la modification d'un groupe
     public function update(GroupeRequest $request,Groupe $groupe)
     {
         $this->groupeManager->build($groupe,$request);   
@@ -116,6 +116,8 @@ class GroupeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //supprimer un groupe
     public function delete(Groupe $groupe)
     {
         $groupe->delete();

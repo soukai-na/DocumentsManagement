@@ -21,6 +21,7 @@ class UserController extends Controller
         $this->userManager = $userManager;
     }
 
+    //la liste des utilisateurs
     public function index()
     {
 
@@ -35,11 +36,13 @@ class UserController extends Controller
         );
     }
 
+    //le compte d'un utilisateur
     public function compte()
     {
         return view('users.compte');
     }
 
+    //la modification de l'image d'un user
     public function compteUpdate(Request $request, User $user)
     {
         $request->validate([
@@ -62,6 +65,8 @@ class UserController extends Controller
 
         return redirect()->route('compte');
     }
+
+    //la modification du mot de passe d'un user
     public function updatePassword(Request $request)
     {
         $request->validate([
@@ -80,6 +85,7 @@ class UserController extends Controller
         return back()->with("status", "Password changed successfully!");
     }
 
+    //la page de creation d'un user
     public function create()
     {
         $folders = DB::table('folders')->where('folder_id', NULL)->get();
@@ -90,6 +96,7 @@ class UserController extends Controller
         ]);
     }
 
+    //sauvegarder un user
     public function store(UserRequest $request)
     {
         $validated = $request->validated();
@@ -99,6 +106,7 @@ class UserController extends Controller
         return redirect()->route('users')->with('success', "le user a bien été sauvegardé!");
     }
 
+    //la page de modification d'un user
     public function edit(User $user)
     {
         $folders = DB::table('folders')->where('folder_id', NULL)->get();
@@ -110,6 +118,7 @@ class UserController extends Controller
         ]);
     }
 
+    //sauvegarder la modification d'un user
     public function update(Request $request, User $user)
     {
         $request->validate([
@@ -129,6 +138,7 @@ class UserController extends Controller
         return redirect()->route('users')->with('success', "le user a bien été modifié!");
     }
 
+    //supprimer un user
     public function delete(User $user)
     {
         $user->delete();

@@ -10,6 +10,7 @@ use App\Http\Requests\FolderRequest;
 
 class FolderController extends Controller
 {
+    //le manager qui gére les champs de la base de données
 
     private $folderManager;
     public function __construct(FolderManager $folderManager)
@@ -22,6 +23,8 @@ class FolderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     //l'affichage des services
     public function index()
     {
         $folders = Folder::all();
@@ -38,6 +41,8 @@ class FolderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     //afficher la page de création d'un service
     public function create()
     {
         return view('folders.create',[
@@ -53,6 +58,8 @@ class FolderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     //pour sauvegarder les données de création d'un service
     public function store(FolderRequest $request)
     {
         $validated=$request->validated();
@@ -62,6 +69,7 @@ class FolderController extends Controller
         return redirect()->route('folders.index')->with('success',"le dossier a bien été sauvegardé!");
     }
 
+    //pour sauvegarder les données de création d'un dossier(sous service, theme,...)
     public function triStore(FolderRequest $request,$id)
     {
         $validated=$request->validated();
@@ -88,6 +96,8 @@ class FolderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //afficher la page de modification d'un dossier
     public function edit(Folder $folder)
     {
         return view('folders.edit',[
@@ -95,6 +105,7 @@ class FolderController extends Controller
         ]);
     }
 
+    //tri de dossiers (Exemple: chaque service et leur sous services)
     public function tri($id)
     {
         $folders = DB::table('folders')->where('folder_id', $id)->get();
@@ -113,6 +124,8 @@ class FolderController extends Controller
         );
       
     }
+
+    //la page de création d'un dossier (sous service, theme, ...)
     public function tricreate(Folder $folder)
     {
         return view('folders.tricreate',[
@@ -128,6 +141,8 @@ class FolderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //pour modifier un dossier
     public function update(FolderRequest $request,Folder $folder)
     {
         $this->folderManager->build($folder,$request);   
@@ -141,6 +156,8 @@ class FolderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //pour supprimer un dossier
     public function delete(Folder $folder)
     {
         $folder->delete();

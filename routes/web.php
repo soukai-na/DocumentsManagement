@@ -23,23 +23,29 @@ use App\Http\Controllers\DocumentController;
 */
 
 
-
+//la page du admin
 Route::get('/', [HomeController::class, 'welcome'])->middleware('admin')->name('welcome');
+//le compte d'un user
 Route::get('/compte',[UserController::class, 'compte'])->name('compte');
+//la modification de l'image d'un user
 Route::put('{user}/compteUpdate',[UserController::class,'compteUpdate'])->name('compte.updatePhoto');
+//la modification du mot de passe d'un user
 Route::post('/updatePassword',[UserController::class,'updatePassword'])->name('compte.updatePassword');
 Route::get('/test', function () {
     return view('test');
 });
+//l'authentification
 Auth::routes();
 
 
-
+//la page d'un user
 Route::get('/home', [HomeController::class, 'doc'])->name('home');
 Route::get('/files',[DocumentController::class, 'files'])->name('files');
 
+//le tri des dossiers
 Route::get('/folders/{folder:id}',[FolderController::class, 'tri'])->name('folders.tri');
 
+//gestion des dossiers
 Route::prefix('')->middleware('admin')->group(function(){
     Route::get('/folders', [FolderController::class, 'index'])->name('folders.index');
     Route::get('/createfolder',[FolderController::class,'create'])->name('folders.create');
@@ -52,6 +58,7 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::put('/folders/{folder}/update',[FolderController::class,'update'])->name('folders.update');
 });
 
+//gestion des utilisateurs
 Route::prefix('')->middleware('admin')->group(function(){
     Route::get('/users',[UserController::class, 'index'])->name('users');
     Route::get('/users/{user}',[UserController::class, 'edit'])->name('users.edit');
@@ -61,7 +68,7 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::delete('/users/{user:id}/delete',[UserController::class,'delete'])->name('users.delete');
 });
 
-
+//gestion des documents
 Route::prefix('')->group(function(){
     Route::get('/document',[DocumentController::class, 'index'])->name('documents');
     Route::get('/editdocument/{document}',[DocumentController::class, 'edit'])->name('documents.edit');
@@ -75,6 +82,8 @@ Route::prefix('')->group(function(){
     Route::get('/document/download/{document:id}',[DocumentController::class,'download'])->name('documents.download');
 });
 
+
+//gestion des groupes
 Route::prefix('')->middleware('admin')->group(function(){
     Route::get('/groupes',[GroupeController::class, 'index'])->name('groupes');
     Route::get('/groupes/{groupe}',[GroupeController::class, 'edit'])->name('groupes.edit');
@@ -85,8 +94,6 @@ Route::prefix('')->middleware('admin')->group(function(){
 });
 
 
-Route::get('/relation',function(){
-    return Groupe::with('users')->find(1);
-});
 
+//la page de recherche
 Route::get('/search',[SearchController::class,'search'])->name('search');
